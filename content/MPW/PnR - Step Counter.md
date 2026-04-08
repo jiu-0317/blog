@@ -125,8 +125,7 @@ Abstract 만드는 순서가 logical --> pins --> extract --> abstract 인데
 ![[Pasted image 20260408150850.png]]
 
 이게 각 tech, cell lef이다. 
-
-![[tech 1.lef]]
-
 ![[no_tech.lef]]
+
+![[tech 2.lef]]
 
