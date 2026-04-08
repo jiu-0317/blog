@@ -5,12 +5,11 @@ PnR을 하기 위해 파일을 import하는 과정에서 다음과 같은 문제
 이 글에서는 해당 문제들을 해결하는 내용을 작성한다. 
 
 - [x] 라우팅 스펙과 via 정의가 되어있지 않다.
-- [ ] tech lef를 뽑을 때 PITCH가 안나온다.
-	- [ ] tech lef를 뽑았을 때 PITCH가 2번 들어간다. 
+- [x] tech lef를 뽑을 때 PITCH가 안나온다.
+- [x] constraints 부족 문제
 - [ ] lib가 잘 안나와서 Genus에서 합성했을 때 타이밍 정보가 안나왔다.
 
-
-### 라우팅 스펙과 via 정의가 되어있지 않은 문제
+## 라우팅 스펙과 via 정의가 되어있지 않은 문제
 이제 innovus 에서 PnR을 해야한다. 
 그걸 위해서는 abstract view가 필요한데, 이걸 만들기 위해서는 tech파일을 수정해야한다. 
 
@@ -129,3 +128,33 @@ Abstract 만드는 순서가 logical --> pins --> extract --> abstract 인데
 
 ![[tech 2.lef]]
 
+
+---
+
+## constraints 부족 문제
+
+이제 TechDB Check를 돌려보면 
+![[Pasted image 20260408153058.png]]
+
+![[Pasted image 20260408153104.png]]
+
+필요한 constraints와 발견된 constraints가 나온다. 
+PVS는 Physical Verification System. Cadence의 물리적 검증 툴이다.
+
+여기서 PVS를 눌러보면 
+![[Pasted image 20260408153824.png]]
+
+Act와 nwell의 spacing이 없다고 나온다. 
+이건 sky130 pdk를 참고해서 이렇게 넣으면 된다.
+
+![[Pasted image 20260408153927.png]]
+
+항상 tf 파일을 손대면 load와 savr를 하는 것을 잊지 말자. 
+
+![[Pasted image 20260408154053.png]]
+
+이제 모든 constraints가 맞춰졌다. 
+
+---
+
+## Genus에서 합성했을 때 타이밍 정보가 안 나오는 문제
