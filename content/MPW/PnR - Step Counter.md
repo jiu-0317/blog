@@ -157,4 +157,16 @@ Act와 nwell의 spacing이 없다고 나온다.
 
 ---
 
-## Genus에서 합성했을 때 타이밍 정보가 안 나오는 문제
+## Genus에서 합성했을 때 면적과 타이밍 정보가 안 나오는 문제
+
+### 면적
+원래 liberate로 만든 lib에는 area가 없었다..
+그래서 virtuoso에서 prBoundary의 면적을 재서 직접 넣어줬다. 
+
+![[Pasted image 20260409155711.png]]
+
+이렇게 하니까 면적 report가 잘 나왔다. 
+
+![[Pasted image 20260409155753.png]]
+
+### 타이밍
