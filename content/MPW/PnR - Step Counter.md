@@ -170,3 +170,48 @@ Act와 nwell의 spacing이 없다고 나온다.
 ![[Pasted image 20260409155753.png]]
 
 ### 타이밍
+
+이전에 사용하던 genus 합성 tcl 일부는 다음과 같다.
+
+``` c
+set clock [define_clock -period ${period_ps} -name clk]
+```
+
+여기서 사용되는 define clock 은 genus user guide에 나오지 않는다.
+![[Pasted image 20260409172126.png|361]]
+
+대신 다음 명령어를 사용해야 타이밍이 나온다.
+
+```c
+set clock [create_clock -period ${period_ps} -name clk [get_db ports clk]]
+```
+
+![[Pasted image 20260409172242.png]]
+
+
+#### get_db ports clk
+
+다음은 Genus user guide의 일부이다.
+
+Genus uses the Design Information Hierarchy to interface with its database.
+![[Pasted image 20260409182424.png]]
+
+해당 데이터베이스는 read_rtl로 읽은 디자인을 기반으로 elaborate에서 구축한다.
+
+![[Pasted image 20260409184032.png]]
+
+designs의 하위 폴더 구조는 다음과 같다다
+
+![[Pasted image 20260409184056.png]]
+
+그리고 ports는 다음과 같은 형식으로 저장된다.
+
+![[Pasted image 20260409184150.png]]
+
+
+그리고 get_db는 Genus의 데이터베이스에서 객체나 속성 값을 조회하는 커맨드이다.
+![[Pasted image 20260409184450.png]]
+
+--> get_db ports clk 는 ports타입의 객체 중에서 이름이 clk인 항목을 반환한다. 
+해당 항목이 clock으로 사용된다는 것을 지정하는 것이다. 
+
