@@ -8,6 +8,7 @@ PnR을 하기 위해 파일을 import하는 과정에서 다음과 같은 문제
 - [x] tech lef를 뽑을 때 PITCH가 안나온다.
 - [x] constraints 부족 문제
 - [x] lib가 잘 안나와서 Genus에서 합성했을 때 면적과 타이밍 정보가 안나왔다.
+- [x]  core site 부재 문제
 
 ## 라우팅 스펙과 via 정의가 되어있지 않은 문제
 이제 innovus 에서 PnR을 해야한다. 
@@ -216,3 +217,27 @@ designs의 하위 폴더 구조는 다음과 같다.
 --> get_db ports clk 는 ports타입의 객체 중에서 이름이 clk인 항목을 반환한다. 
 해당 항목이 clock으로 사용된다는 것을 지정하는 것이다. 
 
+
+# Core Site
+
+![[Pasted image 20260412155320.png]]
+
+이건 tech.lef에 core site가 정의되어있지 않다는 것이다. 
+
+```c
+SITE CoreSite
+  CLASS CORE ;
+  SIZE 0.05 BY 27.7 ;
+END CoreSite
+```
+
+이걸 추가해주면 된다. 
+
+SITE는 Innovus에게 **셀을 배치할 격자(grid)의 단위**를 알려주는 것이다. 
+27.7은 셀의 세로 높이이고, 0.05는 셀의 가로 길이의 최대공약수이다. 
+
+이렇게 설정해주고 import하면, 
+
+![[Pasted image 20260412191129.png]]
+
+이렇게 import되는 것을 볼 수 있다!
