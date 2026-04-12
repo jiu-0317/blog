@@ -1,7 +1,6 @@
 
 이제 import design에 성공했으니 본격적으로 P&R 을 할 차례다. 
 먼저 innovus의 user guide를 읽고 공부한 내용을 정리한다. 
-
 # Flat Implementation
 
 ![[Pasted image 20260412194029.png]]
