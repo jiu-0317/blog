@@ -201,7 +201,7 @@ Genus uses the Design Information Hierarchy to interface with its database.
 
 ![[Pasted image 20260409184032.png]]
 
-designs의 하위 폴더 구조는 다음과 같다다
+designs의 하위 폴더 구조는 다음과 같다.
 
 ![[Pasted image 20260409184056.png]]
 
