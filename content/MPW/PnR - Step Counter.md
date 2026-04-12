@@ -7,7 +7,7 @@ PnR을 하기 위해 파일을 import하는 과정에서 다음과 같은 문제
 - [x] 라우팅 스펙과 via 정의가 되어있지 않다.
 - [x] tech lef를 뽑을 때 PITCH가 안나온다.
 - [x] constraints 부족 문제
-- [ ] lib가 잘 안나와서 Genus에서 합성했을 때 타이밍 정보가 안나왔다.
+- [x] lib가 잘 안나와서 Genus에서 합성했을 때 면적과 타이밍 정보가 안나왔다.
 
 ## 라우팅 스펙과 via 정의가 되어있지 않은 문제
 이제 innovus 에서 PnR을 해야한다. 
@@ -178,6 +178,7 @@ set clock [define_clock -period ${period_ps} -name clk]
 ```
 
 여기서 사용되는 define clock 은 genus user guide에 나오지 않는다.
+
 ![[Pasted image 20260409172126.png|361]]
 
 대신 다음 명령어를 사용해야 타이밍이 나온다.
