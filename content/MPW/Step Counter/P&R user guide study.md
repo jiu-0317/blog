@@ -164,6 +164,7 @@ Delay Corner + Constraint Mode를 합쳐서 "하나의 분석 조건"으로 만�
 # Floorplanning
 
 이제 floorplan을 하면 된다..
+
 ![[Pasted image 20260413190701.png|357]]
 
 ![[Pasted image 20260413190634.png]]
@@ -183,4 +184,6 @@ Generated pitch 1.6 in MET2 is different from 2 defined in technology file in un
 Generated pitch 2 in MET1 is different from 1.6 defined in technology file in unpreferred direction.
 **WARN: (IMPFP-325):    Floorplan of the design is resized. All current floorplan objects are automatically derived based on specified new floorplan. This may change blocks, fixed standard cells, existing routes and blockages.
 ```
+
+# Power Planning
 
