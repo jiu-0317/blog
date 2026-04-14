@@ -1,7 +1,4 @@
 ---
-title: Welcome to Quartz
+title: 공부하면서 이것저것
 ---
-
-This is a blank Quartz installation.
-See the [documentation](https://quartz.jzhao.xyz) for how to get started.
-
+공부한 것을 기록합니다.
