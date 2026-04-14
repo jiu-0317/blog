@@ -20,8 +20,7 @@ module delay_det
     output reg sig_start);
 
 reg [3:0] state;
-parameter s0=0, s1=1, s2=2, s3=3, s4=4, s5=5, s6=6, s7=7,
-s8=8, s9=9;
+parameter s0=0, s1=1, s2=2, s3=3, s4=4, s5=5, s6=6, s7=7, s8=8, s9=9;
 
 reg [`Width-1:0] cnt;
 
@@ -84,8 +83,7 @@ module sig_gen (
             output      reg sig_out);
 
 reg         [2:0] state;
-parameter   s0=0, s1=1, s2=2, s3=3, s4=4, s5=5, s6=6,
-s7=7;
+parameter   s0=0, s1=1, s2=2, s3=3, s4=4, s5=5, s6=6, s7=7;
 reg         [`Width-1:0] cnt;
 reg         cout;
 reg         [`Width-1:0] cnt2;
