@@ -187,3 +187,106 @@ Generated pitch 2 in MET1 is different from 1.6 defined in technology file in un
 
 # Power Planning
 
+![[Pasted image 20260414151210.png]]
+
+## addRing
+
+이제 addRing 을 하면 되는데, txtRef를 보면 다음과 같이 예제가 나와있다. 
+
+![[Pasted image 20260414151358.png]]
+
+각 옵션을 살펴보면, 
+`addRing -nets {vdd gnd} -type core_rings -center 1 –layer {top METAL6 bottom METAL6 right METAL5 left METAL5} –width 10 -spacing 2`
+
+**-nets**: Specifies the names of the nets for which power rings are to be created. You must enclose the list of net names within curly braces.
+
+**-type**: `-type` 옵션은 **ring을 어디 주변에 만들 것인지** 결정합니다.
+**`core_rings`** — core 영역의 외곽을 따라 ring을 생성합니다. 전체 standard cell 영역에 전원을 공급하는 메인 ring입니다. Jiu의 설계에서 사용할 타입이 이것입니다.
+**`block_rings`** — 특정 매크로 블록이나 power domain 주변에 ring을 생성합니다. 예를 들어 디자인 안에 PLL이나 SRAM 같은 하드 매크로가 있을 때, 그 블록만 감싸는 별도의 ring을 만들 때 씁니다. 이 경우 `-around` 옵션으로 대상을 지정해야 합니다.
+
+**-center**: `-center {0 | 1}` 옵션은 **core ring을 I/O 패드와 core boundary 사이의 중앙에 배치할지 여부**를 결정합니다.
+`-center 1`로 설정하면 ring이 I/O 패드 안쪽 경계와 core 영역 바깥쪽 경계 사이의 정중앙에 자동 배치됩니다. 이 경우 `-offset` 값을 별도로 지정할 필요가 없습니다.
+`-center 0` (기본값)이면 자동 센터링을 하지 않으므로, `-offset` 값을 직접 지정해서 ring의 위치를 수동으로 제어해야 합니다.
+
+이번 설계의 경우 pad가 없으니 직접 offset을 지정하면 된다. 
+
+**–layer**: 각 위 아래 왼쪽 오른쪽에 사용할 MET layer를 지정한다. 
+
+**–width**: 파워 선으로 사용되는 메탈의 width를 지정한다. 
+
+**-spacing**: VDD/VSS간 거리를 지정한다. 
+
+나는 다음과 같은 옵션을 사용할 것이다. 
+`addRing -type core_rings -nets {VDD VSS} -layer {top MET3 bottom MET3 left MET2 right MET2} -width 5 -spacing 1.2 -offset 2`
+
+![[Pasted image 20260414152543.png]]
+
+
+![[Pasted image 20260414155408.png]]
+
+
+## addStripe
+
+addStripe는 다음과 같이 예제가 나와있다. 
+![[Pasted image 20260414152708.png]]
+
+`addStripe -direction vertical -nets {vdd gnd} -width 10 -spacing 1 -layer METAL6 -start_offset 50  -set_to_set_distance  50`
+
+addStripe는 core 내부에 수직 방향 전원 stripe를 일정 간격으로 추가해서 IR drop을 줄여주는 역할이다. 
+
+IR drop이란, 메탈 도선의 저항으로 전류가 떨어지는 현상이다. 
+power ring이 코어 외부에만 있으면 core 내부는 power ring으로부터 긴 거리로 이어진다. 
+그러면 전류가 떨어질 수 있으니까 stripe으로 ring에서 core 내부로 들어가는 굵은 전원선을 만들어주는 것 이다. 
+
+
+**-set_to_set_distance** 
+`-set_to_set_distance`는 stripe 세트 간의 반복 간격(pitch)입니다.
+
+여기서 "set(세트)"란 하나의 addStripe 명령으로 생성되는 VDD + VSS 한 쌍을 의미합니다. 예를 들어 `-nets {VDD VSS}`로 지정하면 VDD stripe 하나와 VSS stripe 하나가 나란히 생기는데, 이 한 쌍이 하나의 세트입니다.
+
+`-set_to_set_distance 200`이라고 하면, 첫 번째 세트의 VDD stripe 중심선에서 다음 세트의 VDD stripe 중심선까지의 거리가 200μm라는 뜻입니다. 이 간격으로 core 영역 전체에 걸쳐 세트가 반복 생성됩니다.
+
+Core 영역이 800μm 너비이고 set_to_set_distance가 200μm이면, 대략 4세트(VDD+VSS 쌍 4개)가 core 내부에 수직으로 배치됩니다. 이 값을 줄이면 stripe가 더 촘촘해져서 IR drop에는 유리하지만, 그만큼 시그널 라우팅에 쓸 수 있는 MET2 공간이 줄어드는 트레이드오프가 있습니다.
+
+```
+addStripe -nets {VDD VSS} -layer MET2 -direction vertical \
+  -width 2 -spacing 1.2 -set_to_set_distance 200 \
+  -start_from left -start_offset 50
+```
+
+이 옵션을 사용할 것이다.
+
+![[Pasted image 20260414155454.png]]
+
+![[Pasted image 20260414155605.png]]
+
+
+## place_opt_design
+
+
+## sroute
+
+![[Pasted image 20260414160151.png]]
+
+나는 이 옵션을 사용 할 것이다. 
+
+```
+sroute -connect {corePin} -layerChangeRange {MET1 MET3} \
+  -nets {VDD VSS}
+```
+
+`-layerChangeRange {MET1 MET3}`는 **sroute가 전원 라우팅 시 사용할 수 있는 메탈 레이어의 범위**를 지정합니다.
+
+Standard cell의 VDD/VSS 핀은 MET1에 있고, power ring은 MET2/MET3에 있습니다. sroute가 이 둘을 연결하려면 MET1에서 via를 통해 MET2나 MET3까지 올라가야 합니다. `-layerChangeRange {MET1 MET3}`는 "MET1부터 MET3 사이의 레이어를 자유롭게 사용해서 연결하라"는 의미입니다.
+
+
+---
+
+자 문제가 생겼다..
+
+명령어 순서는 
+```
+floorPlan → globalNetConnect → addRing → addStripe → place_opt_design → sroute -connect corePin
+```
+
+이렇게 되어있는데, place_opt_design → sroute 을 하니 
