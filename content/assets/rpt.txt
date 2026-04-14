@@ -1,0 +1,119 @@
+
+innovus 17> checkDesign -netlist -physicalLibrary -timingLibrary -powerGround -outDir RPT
+############################################################################
+# Innovus Netlist Design Rule Check
+# Tue Apr 14 20:19:46 2026
+############################################################################
+Design: saturation_step_counter
+
+------ Design Summary:
+Total Standard Cell Number   (cells) : 180
+Total Block Cell Number      (cells) : 0
+Total I/O Pad Cell Number    (cells) : 0
+Total Standard Cell Area     ( um^2) : 66261.17
+Total Block Cell Area        ( um^2) : 0.00
+Total I/O Pad Cell Area      ( um^2) : 0.00
+
+------ Design Statistics:
+
+Number of Instances            : 180
+Number of Non-uniquified Insts : 180
+Number of Nets                 : 192
+Average number of Pins per Net : 2.83
+Maximum number of Pins in Net  : 11
+
+------ I/O Port summary
+
+Number of Primary I/O Ports    : 18
+Number of Input Ports          : 10
+Number of Output Ports         : 8
+Number of Bidirectional Ports  : 0
+Number of Power/Ground Ports   : 0
+Number of Floating Ports                     *: 0
+Number of Ports Connected to Multiple Pads   *: 0
+Number of Ports Connected to Core Instances   : 18
+**WARN: (IMPREPO-202):  There are 18 Ports connected to core instances.
+
+------ Design Rule Checking:
+
+Number of Output Pins connect to Power/Ground *: 0
+Number of Insts with Input Pins tied together ?: 0
+Number of TieHi/Lo term nets not connected to instance's PG terms ?: 0
+Number of Input/InOut Floating Pins            : 0
+Number of Output Floating Pins                 : 0
+Number of Output Term Marked TieHi/Lo         *: 0
+
+Number of nets with tri-state drivers          : 0
+Number of nets with parallel drivers           : 0
+Number of nets with multiple drivers           : 0
+Number of nets with no driver (No FanIn)       : 0
+Number of Output Floating nets (No FanOut)     : 0
+Number of High Fanout nets (>50)               : 0
+Design check done.
+Report saved in file RPT/saturation_step_counter.main.htm.ascii
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary
+WARNING   IMPREPO-202          1  There are %d Ports connected to core ins...
+*** Message Summary: 1 warning(s), 0 error(s)
+
+0
+innovus 18> timeDesign -prePlace -outDir RPT
+*** timeDesign #1 [begin] () : totSession cpu/real = 0:01:05.3/0:24:18.7 (0.0), mem = 2662.2M
+Set Using Default Delay Limit as 101.
+**WARN: (IMPDC-1629):   The default delay limit was set to 101. This is less than the default of 1000 and may result in inaccurate delay calculation for n ets with a fanout higher than the setting.  If needed, the default delay limit may be adjusted by running the command 'set delaycal_use_default_delay_limi t'.
+Setting High Fanout Nets ( > 100 ) as ideal temporarily for -prePlace option
+Set Default Net Delay as 0 ps.
+Set Default Net Load as 0 pF.
+Set Default Input Pin Transition as 1 ps.
+INFO: setAnalysisMode clkSrcPath true -> false
+INFO: setAnalysisMode clockPropagation sdcControl -> forcedIdeal
+Starting delay calculation for Setup views
+AAE_INFO: opIsDesignInPostRouteState() is 0
+AAE DB initialization (MEM=2802.21 CPU=0:00:00.0 REAL=0:00:00.0)
+#################################################################################
+# Design Stage: PreRoute
+# Design Name: saturation_step_counter
+# Design Mode: 90nm
+# Analysis Mode: MMMC Non-OCV
+# Parasitics Mode: No SPEF/RCDB
+# Signoff Settings: SI Off
+#################################################################################
+Calculate delays in Single mode...
+Start delay calculation (fullDC) (1 T). (MEM=2662.48)
+siFlow : Timing analysis mode is single, using late cdB files
+Total number of fetched objects 190
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+End delay calculation. (MEM=2689.39 CPU=0:00:00.0 REAL=0:00:00.0)
+End delay calculation (fullDC). (MEM=2688.88 CPU=0:00:00.3 REAL=0:00:00.0)
+*** Done Building Timing Graph (cpu=0:00:01.0 real=0:00:01.0 totSessionCpu=0:01:06 mem=3250.7M)
+
+------------------------------------------------------------------
+          timeDesign Summary
+------------------------------------------------------------------
+
+Setup views included:
+ my_view
+
++--------------------+---------+---------+---------+
+|     Setup mode     |   all   | reg2reg | default |
++--------------------+---------+---------+---------+
+|           WNS (ns):| 33319.3 | 33319.3 | 33320.4 |
+|           TNS (ns):|  0.000  |  0.000  |  0.000  |
+|    Violating Paths:|    0    |    0    |    0    |
+|          All Paths:|   20    |   10    |   20    |
++--------------------+---------+---------+---------+
+
+Density: 10.679%
+------------------------------------------------------------------
+Resetting back High Fanout Nets as non-ideal
+Set Using Default Delay Limit as 1000.
+Set Default Net Delay as 1000 ps.
+Set Default Input Pin Transition as 0.1 ps.
+Set Default Net Load as 0.5 pF.
+Reported timing to dir RPT
+Total CPU time: 1.38 sec
+Total Real time: 1.0 sec
+Total Memory Usage: 3181.148438 Mbytes
+*** timeDesign #1 [finish] () : cpu/real = 0:00:01.4/0:00:01.4 (1.0), totSession cpu/real = 0:01:06.6/0:24:20.1 (0.0), mem = 3181.1M
+0

@@ -1,0 +1,141 @@
+innovus 21> clock_opt_design
+*** clock_opt_design #1 [begin] () : totSession cpu/real = 0:02:48.7/1:19:31.0 (0.0), mem = 3268.8M
+**INFO: User's settings:
+setOptMode -opt_view_pruning_hold_views_active_list            { my_view }
+setOptMode -opt_view_pruning_setup_views_active_list           { my_view }
+setOptMode -opt_view_pruning_setup_views_persistent_list       { my_view}
+setOptMode -opt_view_pruning_tdgr_setup_views_persistent_list  { my_view}
+setOptMode -opt_drv_margin                                     0
+setOptMode -opt_drv                                            true
+setOptMode -opt_resize_flip_flops                              true
+setOptMode -opt_setup_target_slack                             0
+
+Hard fence disabled
+*** ThreeLayerMode is automatically turned on for small designs with less than 4 layers.
+ThreeLayerMode is on. Timing-driven placement option disabled.
+*** Starting refinePlace (0:02:49 mem=3268.8M) ***
+Max route layer is changed from 127 to 3 because there is no routing track above this layer
+Max route layer is changed from 127 to 3 because there is no routing track above this layer
+
+Starting Small incrNP...
+Density distribution unevenness ratio = 59.748%
+Skipped incrNP (cpu=0:00:00.0, real=0:00:00.0, mem=3268.8M)
+End of Small incrNP (cpu=0:00:00.0, real=0:00:00.0)
+Max route layer is changed from 127 to 3 because there is no routing track above this layer
+Max route layer is changed from 127 to 3 because there is no routing track above this layer
+Move report: Detail placement moves 25 insts, mean move: 0.37 um, max move: 0.65 um
+        Max move on inst (g2236): (592.95, 459.30) --> (592.30, 459.30)
+        Runtime: CPU: 0:00:00.1 REAL: 0:00:00.0 MEM: 3252.8MB
+Summary Report:
+Instances move: 25 (out of 180 movable)
+Instances flipped: 0
+Mean displacement: 0.37 um
+Max displacement: 0.65 um (Instance: g2236) (592.95, 459.3) -> (592.3, 459.3)
+        Length: 140 sites, height: 1 rows, site name: CoreSite, cell type: INV
+Physical-only instances move: 0 (out of 0 movable physical-only)
+Runtime: CPU: 0:00:00.1 REAL: 0:00:00.0 MEM: 3252.8MB
+*** Finished refinePlace (0:02:49 mem=3252.8M) ***
+ccopt_args:
+Runtime...
+(clock_opt_design): CTS Engine: auto. Used Spec: pre-existing CCOPT spec.
+**ERROR: (IMPTCM-162):  "" does not match any object in design for specified type "layer " object in command "create_route_type".
+
+Usage: create_route_type [-help] [-em_ndr_dist <float>] [-em_ndr_rule <rule_name>] [-min_stack_layer <layer>] -name <string>
+                         [-one_side_spacing_range <bottomLayerNum:topLayerNum] [-prefer_multi_cut_via] [-shield_side {one_side both_side}]
+                         [-shield_tap_instance_insertion_effort {none standard high}] [-stack_distance <float>] [[[-non_default_rule <ndr_name>] [-shield_net <net_name>] [-top_preferred_layer <layer>] [-bottom_preferred_layer <layer>] [-preferred_routing_layer_effort {low medium high}]] ] [-mask <mask_number> [-layer_mask_range <bottomLayerNum:topLayerNum>]]
+
+**ERROR: (IMPTCM-4):    The value "" specified for the object type of argument "-top_preferred_layer" is not a valid object. Review the command specification and remove the argument or specify a legal value.
+**ERROR: (IMPTCM-162):  "" does not match any object in design for specified type "layer " object in command "create_route_type".
+
+Usage: create_route_type [-help] [-em_ndr_dist <float>] [-em_ndr_rule <rule_name>] [-min_stack_layer <layer>] -name <string>
+                         [-one_side_spacing_range <bottomLayerNum:topLayerNum] [-prefer_multi_cut_via] [-shield_side {one_side both_side}]
+                         [-shield_tap_instance_insertion_effort {none standard high}] [-stack_distance <float>] [[[-non_default_rule <ndr_name>] [-shield_net <net_name>] [-top_preferred_layer <layer>] [-bottom_preferred_layer <layer>] [-preferred_routing_layer_effort {low medium high}]] ] [-mask <mask_number> [-layer_mask_range <bottomLayerNum:topLayerNum>]]
+
+**ERROR: (IMPTCM-4):    The value "" specified for the object type of argument "-top_preferred_layer" is not a valid object. Review the command specification and remove the argument or specify a legal value.
+**ERROR: (IMPCCOPT-2156):       The supplied input 'default_route_type_nonleaf' does not correspond to an existing route_type object.
+**ERROR: (IMPCCOPT-2149):       Invalid value for property: Could not convert value "default_route_type_nonleaf" to a compatible type.
+**ERROR: (IMPCCOPT-2066):       Command 'set_ccopt_property' used with the property 'route_type' gave result ''.
+For help on this property run 'set_ccopt_property -help route_type'
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary
+ERROR     IMPCCOPT-2066        1  Command '%s' used with the property '%s'...
+ERROR     IMPCCOPT-2149        1  Invalid value for property: %s.
+ERROR     IMPCCOPT-2156        1  The supplied input '%s' does not corresp...
+ERROR     IMPTCM-4             2  The value "%s" specified for the %s type...
+ERROR     IMPTCM-162           2  "%s" does not match any object in design...
+*** Message Summary: 0 warning(s), 7 error(s)
+
+*** clock_opt_design #1 [finish] () : cpu/real = 0:00:00.1/0:00:00.1 (1.0), totSession cpu/real = 0:02:48.8/1:19:31.2 (0.0), mem = 3252.8M
+
+innovus 22> delete_ccopt_clock_tree_spec
+innovus 23> create_route_type -name cts_leaf -top_preferred_layer MET3 -bottom_preferred_layer MET2
+innovus 24> create_route_type -name cts_trunk -top_preferred_layer MET3 -bottom_preferred_layer MET2
+innovus 25> set_ccopt_property use_inverters true
+innovus 26> set_ccopt_property target_max_trans 1500ps
+innovus 27> create_ccopt_clock_tree_spec
+Creating clock tree spec for modes (timing configs): my_mode
+extract_clock_generator_skew_groups=true: create_ccopt_clock_tree_spec will generate skew groups with a name prefix of "_clock_gen" to balance clock generator connected flops with the clock generator they drive.
+**WARN: (IMPCCOPT-4318):        No default buffer cell family identified.
+Type 'man IMPCCOPT-4318' for more detail.
+**WARN: (IMPCCOPT-4322):        No default Or cell family identified.
+Type 'man IMPCCOPT-4322' for more detail.
+Reset timing graph...
+Ignoring AAE DB Resetting ...
+Reset timing graph done.
+Ignoring AAE DB Resetting ...
+Analyzing clock structure...
+Analyzing clock structure done.
+Reset timing graph...
+Ignoring AAE DB Resetting ...
+Reset timing graph done.
+Extracting original clock gating for clk...
+  clock_tree clk contains 10 sinks and 0 clock gates.
+Extracting original clock gating for clk done.
+The skew group clk/my_mode was created. It contains 10 sinks and 1 sources.
+Checking clock tree convergence...
+Checking clock tree convergence done.
+innovus 28> clock_opt_design
+*** clock_opt_design #2 [begin] () : totSession cpu/real = 0:03:00.8/1:26:35.8 (0.0), mem = 3255.1M
+**INFO: User's settings:
+setOptMode -opt_view_pruning_hold_views_active_list            { my_view }
+setOptMode -opt_view_pruning_setup_views_active_list           { my_view }
+setOptMode -opt_view_pruning_setup_views_persistent_list       { my_view}
+setOptMode -opt_view_pruning_tdgr_setup_views_persistent_list  { my_view}
+setOptMode -opt_drv_margin                                     0
+setOptMode -opt_drv                                            true
+setOptMode -opt_resize_flip_flops                              true
+setOptMode -opt_preserve_all_sequential                        false
+setOptMode -opt_setup_target_slack                             0
+
+ccopt_args:
+(clock_opt_design): CTS Engine: auto. Used Spec: pre-existing CCOPT spec.
+**ERROR: (IMPTCM-162):  "" does not match any object in design for specified type "layer " object in command "create_route_type".
+
+Usage: create_route_type [-help] [-em_ndr_dist <float>] [-em_ndr_rule <rule_name>] [-min_stack_layer <layer>] -name <string>
+                         [-one_side_spacing_range <bottomLayerNum:topLayerNum] [-prefer_multi_cut_via] [-shield_side {one_side both_side}]
+                         [-shield_tap_instance_insertion_effort {none standard high}] [-stack_distance <float>] [[[-non_default_rule <ndr_name>] [-shield_net <net_name>] [-top_preferred_layer <layer>] [-bottom_preferred_layer <layer>] [-preferred_routing_layer_effort {low medium high}]] ] [-mask <mask_number> [-layer_mask_range <bottomLayerNum:topLayerNum>]]
+
+**ERROR: (IMPTCM-4):    The value "" specified for the object type of argument "-top_preferred_layer" is not a valid object. Review the command specification and remove the argument or specify a legal value.
+**ERROR: (IMPTCM-162):  "" does not match any object in design for specified type "layer " object in command "create_route_type".
+
+Usage: create_route_type [-help] [-em_ndr_dist <float>] [-em_ndr_rule <rule_name>] [-min_stack_layer <layer>] -name <string>
+                         [-one_side_spacing_range <bottomLayerNum:topLayerNum] [-prefer_multi_cut_via] [-shield_side {one_side both_side}]
+                         [-shield_tap_instance_insertion_effort {none standard high}] [-stack_distance <float>] [[[-non_default_rule <ndr_name>] [-shield_net <net_name>] [-top_preferred_layer <layer>] [-bottom_preferred_layer <layer>] [-preferred_routing_layer_effort {low medium high}]] ] [-mask <mask_number> [-layer_mask_range <bottomLayerNum:topLayerNum>]]
+
+**ERROR: (IMPTCM-4):    The value "" specified for the object type of argument "-top_preferred_layer" is not a valid object. Review the command specification and remove the argument or specify a legal value.
+**ERROR: (IMPCCOPT-2156):       The supplied input 'default_route_type_nonleaf' does not correspond to an existing route_type object.
+**ERROR: (IMPCCOPT-2149):       Invalid value for property: Could not convert value "default_route_type_nonleaf" to a compatible type.
+**ERROR: (IMPCCOPT-2066):       Command 'set_ccopt_property' used with the property 'route_type' gave result ''.
+For help on this property run 'set_ccopt_property -help route_type'
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary
+ERROR     IMPCCOPT-2066        1  Command '%s' used with the property '%s'...
+ERROR     IMPCCOPT-2149        1  Invalid value for property: %s.
+ERROR     IMPCCOPT-2156        1  The supplied input '%s' does not corresp...
+ERROR     IMPTCM-4             2  The value "%s" specified for the %s type...
+ERROR     IMPTCM-162           2  "%s" does not match any object in design...
+*** Message Summary: 0 warning(s), 7 error(s)
+
+*** clock_opt_design #2 [finish] () : cpu/real = 0:00:00.0/0:00:00.0 (1.0), totSession cpu/real = 0:03:00.8/1:26:35.8 (0.0), mem = 3255.1M
