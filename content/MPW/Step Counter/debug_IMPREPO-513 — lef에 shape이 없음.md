@@ -290,6 +290,7 @@ PIN VSS
 ### 참고!
 Tool 오류인지 몰라도 DFF의 SET 신호가 layout에서 signal로 설정해줘도 analog로 export되는 문제가 있다. 
 해당 문제는 직접 lef를 수정하여 해결했다. 
+(cell lef에서)
 
 ![[Pasted image 20260414200021.png]]
 
