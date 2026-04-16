@@ -180,3 +180,31 @@ lef에 추가한 내용은 따로 이 파일에서 정리한다.
 
 이제 tech.lef를 모두 수정했으니 floorplan부터 다시 해보면 
 
+![[Pasted image 20260416174936.png]]
+
+이렇게 해도 라우팅이 잘 안되었다. 
+
+![[Pasted image 20260416180217.png]]
+
+그래서 abstract view를 확인해보니.....
+
+![[Pasted image 20260416180328.png]]
+
+![[Pasted image 20260416180351.png]]
+
+분명 잘 나왔었던 abstract가 이상하게 나와있는 것을 확인했다..
+
+![[Pasted image 20260416192215.png]]
+
+![[Pasted image 20260416192227.png]]
+
+이렇게 옵션을 주고 뽑으니 잘 뽑힌다. 
+
+![[Pasted image 20260416192259.png]]
+
+이제 cell lef를 뽑고
+
+![[abstract2.lef]]
+
+없던 라인들이 생기니 violation이 거의 10배가 되었다..
+
