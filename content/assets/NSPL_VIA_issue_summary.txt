@@ -1,0 +1,123 @@
+================================================================================
+NSPL 0.5μm Innovus 라우팅 VIA 에러 정리
+설계: saturation_step_counter
+날짜: 2025-04-15
+================================================================================
+
+■ 1. 발생한 에러
+--------------------------------------------------------------------------------
+routeDesign 실행 시 다음 에러로 라우팅 실패 (라우팅 0개 완료):
+
+  ERROR (NRDB-158) Missing vias from LAYER MET1 to LAYER MET2 in RULE LEF_DEFAULT.
+  Add the missing via or remove all vias from RULE LEF_DEFAULT
+  so that NanoRoute can use the vias from the default RULE.
+
+관련 WARNING:
+  (NRDB-2040) Rule LEF_DEFAULT doesn't specify any vias that satisfy
+              all of the area rules for layer MET2
+  (NRDB-776)  No default up VIA for LAYER MET1 / MET2 in RULE LEF_DEFAULT.
+  (NRDB-777)  No default down VIA for LAYER MET2 / MET3 in RULE LEF_DEFAULT.
+  (IMPPSP-1202) No suitable DB via cell is found for layer1/2, layer2/3.
+
+
+■ 2. 원인 분석
+--------------------------------------------------------------------------------
+tech.lef에 VIA가 VIARULE GENERATE 형태로만 존재하고,
+고정 VIA (VIA ... END) 블록이 없음.
+
+현재 tech.lef 상태:
+  VIARULE M2_M1 GENERATE DEFAULT   ← 있음 (VIA 생성 규칙만 제공)
+  VIARULE M3_M2 GENERATE DEFAULT   ← 있음
+  VIA M2_M1 DEFAULT                ← 없음 ★ (고정 VIA geometry)
+  VIA M3_M2 DEFAULT                ← 없음 ★
+
+NanoRoute가 VIARULE GENERATE로 VIA를 생성하려 했으나,
+MET2의 AREA rule을 내부적으로 역산(derive)하는 과정에서 실패함.
+→ MET1↔MET2 전환용 VIA를 찾지 못해 라우팅 불가.
+
+참고: .tf 파일의 standardViaDefs에는 M2_M1, M3_M2 모두 정상 정의되어 있음.
+      .tf → tech.lef 변환 과정에서 고정 VIA 블록이 생성되지 않은 것이 근본 원인.
+
+
+■ 3. 해결 방법
+--------------------------------------------------------------------------------
+tech.lef에 고정 VIA 정의 2개를 추가한다.
+위치: END MET3 뒤, VIARULE M3_M2 GENERATE DEFAULT 앞 (102행 이후)
+
+추가할 내용:
+
+--- 여기서부터 복사 ---
+
+VIA M2_M1 DEFAULT
+  LAYER MET1 ;
+    RECT -1.0 -1.0 1.0 1.0 ;
+  LAYER VIA1 ;
+    RECT -0.4 -0.4 0.4 0.4 ;
+  LAYER MET2 ;
+    RECT -1.0 -1.0 1.0 1.0 ;
+END M2_M1
+
+VIA M3_M2 DEFAULT
+  LAYER MET2 ;
+    RECT -1.0 -1.0 1.0 1.0 ;
+  LAYER VIA2 ;
+    RECT -0.4 -0.4 0.4 0.4 ;
+  LAYER MET3 ;
+    RECT -1.0 -1.0 1.0 1.0 ;
+END M3_M2
+
+--- 여기까지 복사 ---
+
+
+■ 4. RECT 값 계산 근거 (.tf standardViaDefs 기반)
+--------------------------------------------------------------------------------
+M2_M1 (.tf 486~489행):
+  cut layer: VIA1, cut 크기 0.8 x 0.8 → RECT = (-0.4, -0.4) ~ (0.4, 0.4)
+  MET1 enclosure: 0.6 사방 → RECT = (-0.4-0.6) ~ (0.4+0.6) = (-1.0, -1.0) ~ (1.0, 1.0)
+  MET2 enclosure: 0.6 사방 → 동일하게 (-1.0, -1.0) ~ (1.0, 1.0)
+
+M3_M2 (.tf 482~485행):
+  cut layer: VIA2, cut 크기 0.8 x 0.8 → RECT = (-0.4, -0.4) ~ (0.4, 0.4)
+  MET2 enclosure: 0.6 사방 → (-1.0, -1.0) ~ (1.0, 1.0)
+  MET3 enclosure: 0.6 사방 → (-1.0, -1.0) ~ (1.0, 1.0)
+
+
+■ 5. 수정 후 필요한 작업
+--------------------------------------------------------------------------------
+1) tech.lef 수정 후 저장
+2) Innovus 재시작 (LEF는 init_design 시점에 읽으므로 실행 중 수정 불가)
+3) init_design부터 전체 플로우 재실행:
+   init_design → floorPlan → place_opt_design → routeDesign
+
+4) routeDesign 실행 후 확인사항:
+   - ERROR (NRDB-158) 해소 여부
+   - M3_M2도 에러 없이 통과하는지 확인
+     (M2_M1 에러에서 먼저 중단되어 M3_M2 검증까지 미도달했을 가능성 있음)
+
+
+■ 6. 추가로 설정하면 좋은 것들
+--------------------------------------------------------------------------------
+# Process node 설정 (WARNING IMPEXT-3530 해소)
+setDesignMode -process 500
+
+# 라우팅 레이어 범위
+setDesignMode -bottomRoutingLayer 1
+setDesignMode -topRoutingLayer 3
+
+# Cap table 미지정 경고 (IMPEXT-6197)는 PDK에 .captable 파일이 있으면 로드,
+# 없으면 슬랙이 넉넉한 설계이므로 무시 가능.
+
+
+■ 7. 참고: VIARULE GENERATE vs 고정 VIA 차이
+--------------------------------------------------------------------------------
+VIARULE GENERATE:
+  - VIA 생성 "규칙"만 제공 (enclosure, cut 크기, spacing 파라미터)
+  - NanoRoute가 규칙으로 VIA를 동적 생성해야 함
+  - AREA rule 등 내부 검증에서 실패할 수 있음 ← 현재 문제
+
+고정 VIA (VIA ... END):
+  - 완성된 VIA geometry를 직접 제공 (각 레이어의 RECT)
+  - NanoRoute가 그대로 사용, 별도 생성/검증 과정 불필요
+  - 확실하고 안전한 방법
+
+================================================================================

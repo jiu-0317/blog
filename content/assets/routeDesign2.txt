@@ -1,0 +1,1454 @@
+innovus 17> routeDesign
+#% Begin routeDesign (date=04/16 14:29:35, mem=2740.5M)
+#routeDesign: cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2740.48 (MB), peak = 2751.04 (MB)
+AAE_INFO: Pre Route call back at the beginning of routeDesign
+#**INFO: setDesignMode -flowEffort standard
+#**INFO: setDesignMode -powerEffort none
+**INFO: User settings:
+setNanoRouteMode -route_route_side                          front
+setNanoRouteMode -route_global_exp_timing_driven_std_delay  1025.6
+setNanoRouteMode -route_exp_design_mode_top_routing_layer   3
+setNanoRouteMode -route_top_routing_layer                   3
+setDesignMode -topRoutingLayer                              3
+setExtractRCMode -engine                                    preRoute
+setDelayCalMode -enable_high_fanout                         true
+setDelayCalMode -eng_enablePrePlacedFlow                    false
+setDelayCalMode -engine                                     aae
+setDelayCalMode -ignoreNetLoad                              false
+setDelayCalMode -socv_accuracy_mode                         low
+setSIMode -separate_delta_delay_on_data                     true
+
+#my_rc has no qx tech file defined
+#No active RC corner or QRC tech file is missing.
+#**INFO: multi-cut via swapping will be performed after routing.
+#**INFO: All auto set options tuned by routeDesign will be restored to their original settings on command completion.
+Begin checking placement ... (start mem=3283.9M, init mem=3283.9M)
+*info: Placed = 180
+*info: Unplaced = 0
+Placement Density:10.67%(66261/620480)
+Placement Density (including fixed std cells):10.67%(66261/620480)
+Finished checkPlace (total: cpu=0:00:00.0, real=0:00:00.0; vio checks: cpu=0:00:00.0, real=0:00:00.0; mem=3283.9M)
+Turning off fast DC mode.
+
+changeUseClockNetStatus Option :  -noFixedNetWires
+*** Changed status on (0) nets in Clock.
+*** End changeUseClockNetStatus (cpu=0:00:00.0, real=0:00:00.0, mem=3274.3M) ***
+#**INFO: auto set of droutePostRouteSwapVia to multiCut
+% Begin globalDetailRoute (date=04/16 14:29:35, mem=2712.1M)
+
+globalDetailRoute
+
+#Start globalDetailRoute on Thu Apr 16 14:29:36 2026
+#
+#Generating timing data, please wait...
+#190 total nets, 182 already routed, 182 will ignore in trialRoute
+**WARN: (IMPEXT-3530):  The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+**WARN: (IMPEXT-6197):  The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+#Dump tif for version 2.1
+Total number of fetched objects 190
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+End delay calculation. (MEM=2747.36 CPU=0:00:00.0 REAL=0:00:00.0)
+
+#Generating timing data took: cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2713.08 (MB), peak = 2756.75 (MB)
+#Done generating timing data.
+#WARNING (NRIG-1303) The congestion map does not match the GCELL grid. Clearing the congestion map.
+#Start reading timing information from file .timing_file_3257371.tif.gz ...
+#Read in timing information for 18 ports, 180 instances from timing file .timing_file_3257371.tif.gz.
+#NanoRoute Version 23.10-p003_1 NR240109-1512/23_10-UB
+#Total number of trivial nets (e.g. < 2 pins) = 9 (skipped).
+#Total number of routable nets = 183.
+#Total number of nets in the design = 192.
+#183 routable nets do not have any wires.
+#183 nets will be global routed.
+#Start routing data preparation on Thu Apr 16 14:29:36 2026
+#
+#Rebuild pin access data for design.
+#Initial pin access analysis.
+#Detail pin access analysis.
+#WARNING (NRAG-41) The M1 user tracks are removed and regenerated from M3.
+# MET1         H   Track-Pitch = 2.4000    Line-2-Via Pitch = 2.2000
+# MET2         V   Track-Pitch = 2.0000    Line-2-Via Pitch = 2.5000
+#WARNING (NRAG-44) Track pitch is too small compared with line-2-via pitch.
+# MET3         H   Track-Pitch = 2.4000    Line-2-Via Pitch = 2.6000
+#WARNING (NRAG-44) Track pitch is too small compared with line-2-via pitch.
+#Bottom routing layer index=1(MET1), bottom routing layer for shielding=1(MET1), bottom shield layer=1(MET1)
+#shield_bottom_stripe_layer=1(MET1), shield_top_stripe_layer=3(MET3)
+#pin_access_rlayer=2(MET2)
+#shield_top_dpt_rlayer=-1 top_rlayer=3 top_trim_metal_rlayer=-1 rlayer_lowest=1 bottom_rlayer=1
+#enable_trim_layer_shield=F enable_dpt_layer_shield=F has_line_end_grid=F
+#enable_dpt_layer_shield=F
+#has_line_end_grid=F
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2727.65 (MB), peak = 2760.92 (MB)
+#Regenerating Ggrids automatically.
+#Auto generating G-grids with size=20 tracks, using layer MET2's pitch = 2.5000.
+#Using automatically generated G-grids.
+#Done routing data preparation.
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2729.55 (MB), peak = 2760.92 (MB)
+#
+#Connectivity extraction summary:
+#183 (95.31%) nets are without wires.
+#9 nets are fixed|skipped|trivial (not extracted).
+#Total number of nets = 192.
+#
+#
+#Finished routing data preparation on Thu Apr 16 14:29:36 2026
+#
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 8.77 (MB)
+#Total memory = 2729.55 (MB)
+#Peak memory = 2760.92 (MB)
+#
+#
+#Start global routing on Thu Apr 16 14:29:36 2026
+#
+#
+#Start global routing initialization on Thu Apr 16 14:29:36 2026
+#
+#Number of eco nets is 0
+#
+#Start global routing data preparation on Thu Apr 16 14:29:36 2026
+#
+#Start routing resource analysis on Thu Apr 16 14:29:36 2026
+#
+#Routing resource analysis is done on Thu Apr 16 14:29:36 2026
+#
+#  Resource Analysis:
+#
+#               Routing  #Avail      #Track     #Total     %Gcell
+#  Layer      Direction   Track     Blocked      Gcell    Blocked
+#  --------------------------------------------------------------
+#  MET1           H         346          77         400     7.75%
+#  MET2           V         379          21         400     0.00%
+#  MET3           H         372           9         400     0.00%
+#  --------------------------------------------------------------
+#  Total                   1097       8.56%        1200     2.58%
+#
+#
+#
+#
+#Global routing data preparation is done on Thu Apr 16 14:29:36 2026
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2729.55 (MB), peak = 2760.92 (MB)
+#
+#
+#Global routing initialization is done on Thu Apr 16 14:29:36 2026
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2729.55 (MB), peak = 2760.92 (MB)
+#
+#start global routing iteration 1...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2730.80 (MB), peak = 2760.92 (MB)
+#
+#start global routing iteration 2...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2730.86 (MB), peak = 2760.92 (MB)
+#
+#start global routing iteration 3...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2730.86 (MB), peak = 2760.92 (MB)
+#
+#start global routing iteration 4...
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2730.86 (MB), peak = 2760.92 (MB)
+#
+#
+#Total number of trivial nets (e.g. < 2 pins) = 9 (skipped).
+#Total number of routable nets = 183.
+#Total number of nets in the design = 192.
+#
+#183 routable nets have routed wires.
+#
+#Routed nets constraints summary:
+#-----------------------------
+#        Rules   Unconstrained
+#-----------------------------
+#      Default             183
+#-----------------------------
+#        Total             183
+#-----------------------------
+#
+#Routing constraints summary of the whole design:
+#-----------------------------
+#        Rules   Unconstrained
+#-----------------------------
+#      Default             183
+#-----------------------------
+#        Total             183
+#-----------------------------
+#
+#
+#  Congestion Analysis: (blocked Gcells are excluded)
+#
+#                 OverCon       OverCon       OverCon       OverCon
+#                  #Gcell        #Gcell        #Gcell        #Gcell    %Gcell
+#     Layer         (1-4)         (5-8)        (9-12)       (13-17)   OverCon
+#  --------------------------------------------------------------------------
+#  MET1          0(0.00%)      0(0.00%)      0(0.00%)      0(0.00%)   (0.00%)
+#  MET2         14(3.50%)      7(1.75%)      4(1.00%)      6(1.50%)   (7.75%)
+#  MET3          4(1.00%)      6(1.50%)      0(0.00%)      0(0.00%)   (2.50%)
+#  --------------------------------------------------------------------------
+#     Total     18(1.52%)     13(1.10%)      4(0.34%)      6(0.51%)   (3.46%)
+#
+#  The worst congested Gcell overcon (routing demand over resource in number of tracks) = 17
+#  Overflow after GR: 0.84% H + 2.62% V
+#
+#Hotspot report including placement blocked areas
+[hotspot] +----------------+-------------------+-------------------+-------------------------------------+
+[hotspot] |      layer     |    max hotspot    |   total hotspot   |            hotspot bbox             |
+[hotspot] +----------------+-------------------+-------------------+-------------------------------------+
+[hotspot] |     MET1(H)    |              0.00 |              0.00 |   (none)                            |
+[hotspot] |     MET2(V)    |              8.00 |              8.00 |   443.19   443.19   775.59   775.59 |
+[hotspot] |     MET3(H)    |              3.00 |              3.00 |   443.19   553.99   775.59   664.79 |
+[hotspot] +----------------+-------------------+-------------------+-------------------------------------+
+[hotspot] |      worst     |   (MET2)     8.00 |   (MET2)     8.00 |                                     |
+[hotspot] +----------------+-------------------+-------------------+-------------------------------------+
+[hotspot] |   all layers   |              9.00 |              9.00 |                                     |
+[hotspot] +----------------+-------------------+-------------------+-------------------------------------+
+Local HotSpot Analysis (blockage included) (3d): normalized congestion max/total hotspot area = 9.00/9.00 (area is in unit of 4 std-cell row bins)
+[hotspot] top 1 congestion hotspot bounding boxes and scores of all layers hotspot
+[hotspot] +-----+-------------------------------------+---------------+-------------------------------+
+[hotspot] | top |            hotspot bbox             | hotspot score |           module              |
+[hotspot] +-----+-------------------------------------+---------------+-------------------------------+
+[hotspot] |  1  |   443.19   443.19   775.59   775.59 |        9.00   |             NA                |
+[hotspot] +-----+-------------------------------------+---------------+-------------------------------+
+#Complete Global Routing.
+#Total wire length = 34800 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2650 um.
+#Total wire length on LAYER MET2 = 17050 um.
+#Total wire length on LAYER MET3 = 15100 um.
+#Total number of vias = 788
+#Up-Via Summary (total 788):
+#
+#-----------------------
+# MET1              518
+# MET2              270
+#-----------------------
+#                   788
+#
+#Max overcon = 17 tracks.
+#Total overcon = 3.46%.
+#Worst layer Gcell overcon rate = 2.50%.
+#
+#Global routing statistics:
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 2.12 (MB)
+#Total memory = 2731.66 (MB)
+#Peak memory = 2760.92 (MB)
+#
+#Finished global routing on Thu Apr 16 14:29:36 2026
+#
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2732.15 (MB), peak = 2760.92 (MB)
+#Start Track Assignment.
+#Done with 221 horizontal wires in 1 hboxes and 214 vertical wires in 1 hboxes.
+#Done with 51 horizontal wires in 1 hboxes and 70 vertical wires in 1 hboxes.
+#Done with 1 horizontal wires in 1 hboxes and 1 vertical wires in 1 hboxes.
+#
+#Track assignment summary:
+# layer   (wire length)   (overlap)     (long ovlp)     (with obs/pg/clk)
+#------------------------------------------------------------------------
+# MET1        2187.60     0.00%           0.00%           0.00%
+# MET2       14599.95     0.00%           0.00%           0.00%
+# MET3       13919.59     0.08%           0.00%           0.00%
+#------------------------------------------------------------------------
+# All       30707.14      0.04%           0.00%           0.00%
+#Complete Track Assignment.
+#Total wire length = 30439 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2162 um.
+#Total wire length on LAYER MET2 = 14458 um.
+#Total wire length on LAYER MET3 = 13819 um.
+#Total number of vias = 788
+#Up-Via Summary (total 788):
+#
+#-----------------------
+# MET1              518
+# MET2              270
+#-----------------------
+#                   788
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2732.21 (MB), peak = 2760.92 (MB)
+#
+#Routing data preparation, pin analysis, global routing and track assignment statistics:
+#Cpu time = 00:00:00
+#Elapsed time = 00:00:00
+#Increased memory = 11.56 (MB)
+#Total memory = 2732.21 (MB)
+#Peak memory = 2760.92 (MB)
+#
+#Start Detail Routing..
+#start initial detail routing ...
+#   number of violations = 91
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-----+-------+
+#  -      | MetSpc| Short| Loop| Totals|
+#---------+-------+------+-----+-------+
+#  MET1   |     37|    46|    0|     83|
+#  MET2   |      3|     4|    1|      8|
+#  Totals |     40|    50|    1|     91|
+#---------+-------+------+-----+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.66 (MB), peak = 2920.94 (MB)
+#start 1st optimization iteration ...
+#   number of violations = 46
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     41|     5|     46|
+#  Totals |     41|     5|     46|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.53 (MB), peak = 2920.94 (MB)
+#start 2nd optimization iteration ...
+#   number of violations = 38
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-----+-------+
+#  -      | MetSpc| Short| Loop| Totals|
+#---------+-------+------+-----+-------+
+#  MET1   |     34|     3|    0|     37|
+#  MET2   |      0|     0|    1|      1|
+#  Totals |     34|     3|    1|     38|
+#---------+-------+------+-----+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2749.43 (MB), peak = 2920.94 (MB)
+#start 3rd optimization iteration ...
+#   number of violations = 36
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     31|     2|     33|
+#  MET2   |      3|     0|      3|
+#  Totals |     34|     2|     36|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2749.55 (MB), peak = 2920.94 (MB)
+#start 4th optimization iteration ...
+#   number of violations = 36
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     33|     3|     36|
+#  Totals |     33|     3|     36|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.95 (MB), peak = 2920.94 (MB)
+#start 5th optimization iteration ...
+#   number of violations = 34
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     32|     2|     34|
+#  Totals |     32|     2|     34|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.34 (MB), peak = 2920.94 (MB)
+#start 6th optimization iteration ...
+#   number of violations = 34
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     32|     2|     34|
+#  Totals |     32|     2|     34|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.03 (MB), peak = 2920.94 (MB)
+#start 7th optimization iteration ...
+#   number of violations = 35
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     33|     2|     35|
+#  Totals |     33|     2|     35|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2749.99 (MB), peak = 2920.94 (MB)
+#start 8th optimization iteration ...
+#   number of violations = 32
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     29|     3|     32|
+#  Totals |     29|     3|     32|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2750.18 (MB), peak = 2920.94 (MB)
+#start 9th optimization iteration ...
+#   number of violations = 36
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     34|     2|     36|
+#  Totals |     34|     2|     36|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.64 (MB), peak = 2920.94 (MB)
+#start 10th optimization iteration ...
+#   number of violations = 34
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     32|     2|     34|
+#  Totals |     32|     2|     34|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.87 (MB), peak = 2920.94 (MB)
+#start 11th optimization iteration ...
+#   number of violations = 36
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     33|     3|     36|
+#  Totals |     33|     3|     36|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.24 (MB), peak = 2920.94 (MB)
+#start 12th optimization iteration ...
+#   number of violations = 35
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     33|     2|     35|
+#  Totals |     33|     2|     35|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2749.91 (MB), peak = 2920.94 (MB)
+#start 13th optimization iteration ...
+#   number of violations = 34
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     32|     2|     34|
+#  Totals |     32|     2|     34|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.26 (MB), peak = 2920.94 (MB)
+#start 14th optimization iteration ...
+#   number of violations = 32
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     29|     3|     32|
+#  Totals |     29|     3|     32|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:01, memory = 2750.66 (MB), peak = 2920.94 (MB)
+#start 15th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2750.72 (MB), peak = 2920.94 (MB)
+#start 16th optimization iteration ...
+#   number of violations = 29
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     28|     1|     29|
+#  Totals |     28|     1|     29|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.88 (MB), peak = 2920.94 (MB)
+#start 17th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     27|     27|
+#  Totals |     27|     27|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.49 (MB), peak = 2920.94 (MB)
+#start 18th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.28 (MB), peak = 2920.94 (MB)
+#start 19th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     23|     1|     24|
+#  Totals |     23|     1|     24|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.62 (MB), peak = 2920.94 (MB)
+#start 20th optimization iteration ...
+#   number of violations = 29
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     28|     1|     29|
+#  Totals |     28|     1|     29|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2751.19 (MB), peak = 2920.94 (MB)
+#start 21th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2751.31 (MB), peak = 2920.94 (MB)
+#start 22th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.71 (MB), peak = 2920.94 (MB)
+#start 23th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2751.42 (MB), peak = 2920.94 (MB)
+#start 24th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2750.75 (MB), peak = 2920.94 (MB)
+#start 25th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2750.98 (MB), peak = 2920.94 (MB)
+#start 26th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2751.62 (MB), peak = 2920.94 (MB)
+#start 27th optimization iteration ...
+#   number of violations = 28
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     27|     1|     28|
+#  Totals |     27|     1|     28|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2751.64 (MB), peak = 2920.94 (MB)
+#start 28th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.52 (MB), peak = 2920.94 (MB)
+#start 29th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     26|     26|
+#  Totals |     26|     26|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.34 (MB), peak = 2920.94 (MB)
+#start 30th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2751.76 (MB), peak = 2920.94 (MB)
+#start 31th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.20 (MB), peak = 2920.94 (MB)
+#start 32th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.33 (MB), peak = 2920.94 (MB)
+#start 33th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.51 (MB), peak = 2920.94 (MB)
+#start 34th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.61 (MB), peak = 2920.94 (MB)
+#start 35th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     23|     1|     24|
+#  Totals |     23|     1|     24|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.87 (MB), peak = 2920.94 (MB)
+#start 36th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:02, elapsed time = 00:00:02, memory = 2752.20 (MB), peak = 2920.94 (MB)
+#start 37th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.21 (MB), peak = 2920.94 (MB)
+#start 38th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.19 (MB), peak = 2920.94 (MB)
+#start 39th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     25|     25|
+#  Totals |     25|     25|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.45 (MB), peak = 2920.94 (MB)
+#start 40th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:02, elapsed time = 00:00:02, memory = 2752.22 (MB), peak = 2943.16 (MB)
+#start 41th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.38 (MB), peak = 2943.16 (MB)
+#start 42th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.91 (MB), peak = 2943.16 (MB)
+#start 43th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.94 (MB), peak = 2943.16 (MB)
+#start 44th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.00 (MB), peak = 2943.16 (MB)
+#start 45th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     24|     1|     25|
+#  Totals |     24|     1|     25|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.76 (MB), peak = 2943.16 (MB)
+#start 46th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.19 (MB), peak = 2943.16 (MB)
+#start 47th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.49 (MB), peak = 2943.16 (MB)
+#start 48th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.03 (MB), peak = 2943.16 (MB)
+#start 49th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.68 (MB), peak = 2943.16 (MB)
+#start 50th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     24|     1|     25|
+#  Totals |     24|     1|     25|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.23 (MB), peak = 2943.16 (MB)
+#start 51th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.12 (MB), peak = 2943.16 (MB)
+#start 52th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.50 (MB), peak = 2943.16 (MB)
+#start 53th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.75 (MB), peak = 2943.16 (MB)
+#start 54th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2752.83 (MB), peak = 2943.16 (MB)
+#start 55th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     27|     27|
+#  Totals |     27|     27|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2753.95 (MB), peak = 2943.16 (MB)
+#start 56th optimization iteration ...
+#   number of violations = 28
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     27|     1|     28|
+#  Totals |     27|     1|     28|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.23 (MB), peak = 2943.16 (MB)
+#start 57th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.43 (MB), peak = 2943.16 (MB)
+#start 58th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.56 (MB), peak = 2943.16 (MB)
+#start 59th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.73 (MB), peak = 2943.16 (MB)
+#start 60th optimization iteration ...
+#   number of violations = 22
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     21|     1|     22|
+#  Totals |     21|     1|     22|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.85 (MB), peak = 2943.16 (MB)
+#start 61th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     23|     1|     24|
+#  Totals |     23|     1|     24|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.84 (MB), peak = 2943.16 (MB)
+#start 62th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.90 (MB), peak = 2943.16 (MB)
+#start 63th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2755.03 (MB), peak = 2943.16 (MB)
+#start 64th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     24|     1|     25|
+#  Totals |     24|     1|     25|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2755.23 (MB), peak = 2943.16 (MB)
+#start 65th optimization iteration ...
+#   number of violations = 27
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     26|     1|     27|
+#  Totals |     26|     1|     27|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2753.92 (MB), peak = 2943.16 (MB)
+#start 66th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     23|     1|     24|
+#  Totals |     23|     1|     24|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.05 (MB), peak = 2943.16 (MB)
+#start 67th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.70 (MB), peak = 2943.16 (MB)
+#start 68th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.68 (MB), peak = 2943.16 (MB)
+#start 69th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     25|     1|     26|
+#  Totals |     25|     1|     26|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.81 (MB), peak = 2943.16 (MB)
+#start 70th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     24|     1|     25|
+#  Totals |     24|     1|     25|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2755.29 (MB), peak = 2943.16 (MB)
+#start 71th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     23|     1|     24|
+#  Totals |     23|     1|     24|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.04 (MB), peak = 2943.16 (MB)
+#start 72th optimization iteration ...
+#   number of violations = 25
+#
+#  By Layer and Type:
+#
+#---------+-------+------+-------+
+#  -      | MetSpc| Short| Totals|
+#---------+-------+------+-------+
+#  MET1   |     24|     1|     25|
+#  Totals |     24|     1|     25|
+#---------+-------+------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2753.67 (MB), peak = 2943.16 (MB)
+#start 73th optimization iteration ...
+#   number of violations = 26
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     26|     26|
+#  Totals |     26|     26|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2754.41 (MB), peak = 2943.16 (MB)
+#start 74th optimization iteration ...
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2754.52 (MB), peak = 2943.16 (MB)
+#Complete Detail Routing.
+#Total wire length = 17517 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2503 um.
+#Total wire length on LAYER MET2 = 9109 um.
+#Total wire length on LAYER MET3 = 5905 um.
+#Total number of vias = 866
+#Up-Via Summary (total 866):
+#
+#-----------------------
+# MET1              519
+# MET2              347
+#-----------------------
+#                   866
+#
+#Total number of DRC violations = 24
+#Cpu time = 00:01:03
+#Elapsed time = 00:01:03
+#Increased memory = 20.49 (MB)
+#Total memory = 2752.70 (MB)
+#Peak memory = 2943.16 (MB)
+#
+#Start Post Route via swapping...
+#99.75% of area are rerouted by ECO routing.
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2753.21 (MB), peak = 2943.16 (MB)
+#CELL_VIEW saturation_step_counter,init has 24 DRC violations
+#Total number of DRC violations = 24
+#No via is swapped.
+#Post Route via swapping is done.
+#Total wire length = 17517 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2503 um.
+#Total wire length on LAYER MET2 = 9109 um.
+#Total wire length on LAYER MET3 = 5905 um.
+#Total number of vias = 866
+#Up-Via Summary (total 866):
+#
+#-----------------------
+# MET1              519
+# MET2              347
+#-----------------------
+#                   866
+#
+#
+#Start Post Route wire spreading..
+#
+#Start DRC checking..
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2751.94 (MB), peak = 2943.16 (MB)
+#CELL_VIEW saturation_step_counter,init has 24 DRC violations
+#Total number of DRC violations = 24
+#
+#Start data preparation for wire spreading...
+#
+#Data preparation is done on Thu Apr 16 14:30:40 2026
+#
+#
+#Start Post Route Wire Spread.
+#Done with 21 horizontal wires in 1 hboxes and 25 vertical wires in 1 hboxes.
+#Complete Post Route Wire Spread.
+#
+#Total wire length = 17712 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2506 um.
+#Total wire length on LAYER MET2 = 9209 um.
+#Total wire length on LAYER MET3 = 5996 um.
+#Total number of vias = 866
+#Up-Via Summary (total 866):
+#
+#-----------------------
+# MET1              519
+# MET2              347
+#-----------------------
+#                   866
+#
+#
+#Start DRC checking..
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2751.31 (MB), peak = 2943.16 (MB)
+#CELL_VIEW saturation_step_counter,init has 24 DRC violations
+#Total number of DRC violations = 24
+#   number of violations = 24
+#
+#  By Layer and Type:
+#
+#---------+-------+-------+
+#  -      | MetSpc| Totals|
+#---------+-------+-------+
+#  MET1   |     24|     24|
+#  Totals |     24|     24|
+#---------+-------+-------+
+#
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2750.70 (MB), peak = 2943.16 (MB)
+#CELL_VIEW saturation_step_counter,init has 24 DRC violations
+#Total number of DRC violations = 24
+#Post Route wire spread is done.
+#Total wire length = 17712 um.
+#Total half perimeter of net bounding box = 15773 um.
+#Total wire length on LAYER MET1 = 2506 um.
+#Total wire length on LAYER MET2 = 9209 um.
+#Total wire length on LAYER MET3 = 5996 um.
+#Total number of vias = 866
+#Up-Via Summary (total 866):
+#
+#-----------------------
+# MET1              519
+# MET2              347
+#-----------------------
+#                   866
+#
+#detailRoute Statistics:
+#Cpu time = 00:01:03
+#Elapsed time = 00:01:04
+#Increased memory = 18.48 (MB)
+#Total memory = 2750.70 (MB)
+#Peak memory = 2943.16 (MB)
+#
+#globalDetailRoute statistics:
+#Cpu time = 00:01:04
+#Elapsed time = 00:01:04
+#Increased memory = 48.29 (MB)
+#Total memory = 2760.43 (MB)
+#Peak memory = 2943.16 (MB)
+#Number of warnings = 4
+#Total number of warnings = 6
+#Number of fails = 0
+#Total number of fails = 0
+#Complete globalDetailRoute on Thu Apr 16 14:30:40 2026
+#
+% End globalDetailRoute (date=04/16 14:30:40, total cpu=0:01:04, real=0:01:04, peak res=2943.2M, current mem=2758.1M)
+#Default setup view is reset to my_view.
+#Default setup view is reset to my_view.
+AAE_INFO: Post Route call back at the end of routeDesign
+#routeDesign: cpu time = 00:01:04, elapsed time = 00:01:04, memory = 2755.00 (MB), peak = 2943.16 (MB)
+#
+#  Scalability Statistics
+#
+#----------------------------+---------+-------------+------------+
+#  routeDesign               | cpu time| elapsed time| scalability|
+#----------------------------+---------+-------------+------------+
+#  Pre Callback              | 00:00:00|     00:00:00|         1.0|
+#  Post Callback             | 00:00:00|     00:00:00|         1.0|
+#  Timing Data Generation    | 00:00:00|     00:00:00|         1.0|
+#  DB Import                 | 00:00:00|     00:00:00|         1.0|
+#  DB Export                 | 00:00:00|     00:00:00|         1.0|
+#  Cell Pin Access           | 00:00:00|     00:00:00|         1.0|
+#  Data Preparation          | 00:00:00|     00:00:00|         1.0|
+#  Global Routing            | 00:00:00|     00:00:00|         1.0|
+#  Track Assignment          | 00:00:00|     00:00:00|         1.0|
+#  Detail Routing            | 00:01:03|     00:01:03|         1.0|
+#  Post Route Via Swapping   | 00:00:00|     00:00:00|         1.0|
+#  Post Route Wire Spreading | 00:00:00|     00:00:00|         1.0|
+#  Entire Command            | 00:01:04|     00:01:04|         1.0|
+#----------------------------+---------+-------------+------------+
+#
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary
+WARNING   IMPEXT-6197          1  The Cap table file is not specified. Thi...
+WARNING   IMPEXT-3530          1  The process node is not set. Use the com...
+WARNING   NRAG-41              1  The M1 user tracks are removed and regen...
+WARNING   NRAG-44              2  Track pitch is too small compared with l...
+WARNING   NRIG-1303            1  The congestion map does not match the GC...
+*** Message Summary: 6 warning(s), 0 error(s)
+
+#% End routeDesign (date=04/16 14:30:40, total cpu=0:01:04, real=0:01:05, peak res=2943.2M, current mem=2755.0M)
+0

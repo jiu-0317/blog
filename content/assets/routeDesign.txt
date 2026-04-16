@@ -1,0 +1,132 @@
+innovus 49> routeDesign
+#% Begin routeDesign (date=04/15 09:57:41, mem=2795.1M)
+#routeDesign: cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2795.07 (MB), peak = 2819.11 (MB)
+AAE_INFO: Pre Route call back at the beginning of routeDesign
+#**INFO: setDesignMode -flowEffort standard
+#**INFO: setDesignMode -powerEffort none
+**INFO: User settings:
+setNanoRouteMode -route_route_side                            front
+setNanoRouteMode -route_extract_third_party_compatible        false
+setNanoRouteMode -route_global_exp_timing_driven_std_delay    1025.6
+setNanoRouteMode -route_exp_design_mode_bottom_routing_layer  1
+setNanoRouteMode -route_exp_design_mode_top_routing_layer     3
+setDesignMode -bottomRoutingLayer                             1
+setDesignMode -topRoutingLayer                                3
+setExtractRCMode -engine                                      preRoute
+setDelayCalMode -enable_high_fanout                           true
+setDelayCalMode -eng_enablePrePlacedFlow                      false
+setDelayCalMode -engine                                       aae
+setDelayCalMode -ignoreNetLoad                                false
+setDelayCalMode -socv_accuracy_mode                           low
+setSIMode -separate_delta_delay_on_data                       true
+
+#my_rc has no qx tech file defined
+#No active RC corner or QRC tech file is missing.
+#**INFO: multi-cut via swapping will be performed after routing.
+#**INFO: All auto set options tuned by routeDesign will be restored to their original settings on command completion.
+Begin checking placement ... (start mem=3286.1M, init mem=3286.1M)
+*info: Placed = 180
+*info: Unplaced = 0
+Placement Density:10.67%(66261/620480)
+Placement Density (including fixed std cells):10.67%(66261/620480)
+Finished checkPlace (total: cpu=0:00:00.0, real=0:00:00.0; vio checks: cpu=0:00:00.0, real=0:00:00.0; mem=3286.1M)
+
+changeUseClockNetStatus Option :  -noFixedNetWires
+*** Changed status on (0) nets in Clock.
+*** End changeUseClockNetStatus (cpu=0:00:00.0, real=0:00:00.0, mem=3286.1M) ***
+#**INFO: auto set of droutePostRouteSwapVia to multiCut
+% Begin globalDetailRoute (date=04/15 09:57:41, mem=2795.1M)
+
+globalDetailRoute
+
+#Start globalDetailRoute on Wed Apr 15 09:57:41 2026
+#
+#Generating timing data, please wait...
+#190 total nets, 182 already routed, 182 will ignore in trialRoute
+**WARN: (IMPPTN-1250):  Pin placement has been enabled on metal layer 1.
+**WARN: (IMPPSP-1202):  No suitable DB via cell is found for layer1/2. early global route create via cell for internal use. Via instances in the routing result will not associate to any DB via cell
+**WARN: (IMPPSP-1202):  No suitable DB via cell is found for layer2/3. early global route create via cell for internal use. Via instances in the routing result will not associate to any DB via cell
+**WARN: (IMPEXT-3530):  The process node is not set. Use the command setDesignMode -process <process node> prior to extraction for maximum accuracy and optimal automatic threshold setting.
+**WARN: (IMPEXT-6197):  The Cap table file is not specified. This will result in lower parasitic accuracy when using preRoute extraction or postRoute extraction with effort level 'low'. It is recommended to generate the Cap table file using the 'generateCapTbl' command and specify it before extraction using 'create_rc_corner/update_rc_corner -cap_table'.
+#Dump tif for version 2.1
+Total number of fetched objects 190
+AAE_INFO: Total number of nets for which stage creation was skipped for all views 0
+End delay calculation. (MEM=2828.87 CPU=0:00:00.0 REAL=0:00:00.0)
+
+#Generating timing data took: cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2793.55 (MB), peak = 2838.22 (MB)
+#Done generating timing data.
+#WARNING (NRIG-1303) The congestion map does not match the GCELL grid. Clearing the congestion map.
+#Start reading timing information from file .timing_file_2633070.tif.gz ...
+#Read in timing information for 18 ports, 180 instances from timing file .timing_file_2633070.tif.gz.
+#NanoRoute Version 23.10-p003_1 NR240109-1512/23_10-UB
+#Total number of trivial nets (e.g. < 2 pins) = 9 (skipped).
+#Total number of routable nets = 183.
+#Total number of nets in the design = 192.
+#183 routable nets do not have any wires.
+#183 nets will be global routed.
+#Start routing data preparation on Wed Apr 15 09:57:41 2026
+#
+#WARNING (NRDB-2040) Rule LEF_DEFAULT doesn't specify any vias that satisfy all of the area rules for layer MET2
+#WARNING (NRDB-776) No default up VIA for LAYER MET1 in RULE LEF_DEFAULT.
+#WARNING (NRDB-776) No default up VIA for LAYER MET2 in RULE LEF_DEFAULT.
+#WARNING (NRDB-777) No default down VIA for LAYER MET2 in RULE LEF_DEFAULT.
+#WARNING (NRDB-777) No default down VIA for LAYER MET3 in RULE LEF_DEFAULT.
+#Rebuild pin access data for design.
+#Initial pin access analysis.
+#Detail pin access analysis.
+# MET1         H   Track-Pitch = 1.6000    Line-2-Via Pitch = 1.6000
+# MET2         V   Track-Pitch = 2.0000    Line-2-Via Pitch = 2.0000
+# MET3         H   Track-Pitch = 2.4000    Line-2-Via Pitch = 2.2000
+#Bottom routing layer index=1(MET1), bottom routing layer for shielding=1(MET1), bottom shield layer=1(MET1)
+#shield_bottom_stripe_layer=1(MET1), shield_top_stripe_layer=3(MET3)
+#pin_access_rlayer=2(MET2)
+#shield_top_dpt_rlayer=-1 top_rlayer=3 top_trim_metal_rlayer=-1 rlayer_lowest=1 bottom_rlayer=1
+#enable_trim_layer_shield=F enable_dpt_layer_shield=F has_line_end_grid=F
+#enable_dpt_layer_shield=F
+#has_line_end_grid=F
+#cpu time = 00:00:00, elapsed time = 00:00:00, memory = 2801.56 (MB), peak = 2838.22 (MB)
+#ERROR (NRDB-158) Missing vias from LAYER MET1 to LAYER MET2 in RULE LEF_DEFAULT. Add the missing via or remove all vias from RULE LEF_DEFAULT so that NanoRoute can use the vias from the default RULE.
+#Cpu time = 00:00:01
+#Elapsed time = 00:00:01
+#Increased memory = 3.48 (MB)
+#Total memory = 2799.38 (MB)
+#Peak memory = 2838.22 (MB)
+#WARNING (NRIF-19) Check ERROR messages in log file and correct them if possible.
+% End globalDetailRoute (date=04/15 09:57:41, total cpu=0:00:00.6, real=0:00:00.0, peak res=2838.2M, current mem=2799.1M)
+**WARN: (IMPEXT-3493):  The design extraction status has been reset by set_analysis_view/update_rc_corner or setExtractRCMode  command. The parasitic data can be regenerated either by extracting the design using the extractRC command or by loading the SPEF or RCDB file(s). To prevent resetting of the extraction status, avoid changing extraction modes.
+#Default setup view is reset to my_view.
+#routeDesign: cpu time = 00:00:01, elapsed time = 00:00:01, memory = 2792.54 (MB), peak = 2838.22 (MB)
+#
+#  Scalability Statistics
+#
+#-------------------------+---------+-------------+------------+
+#  routeDesign            | cpu time| elapsed time| scalability|
+#-------------------------+---------+-------------+------------+
+#  Pre Callback           | 00:00:00|     00:00:00|         1.0|
+#  Timing Data Generation | 00:00:01|     00:00:01|         1.0|
+#  DB Import              | 00:00:00|     00:00:00|         1.0|
+#  Cell Pin Access        | 00:00:00|     00:00:00|         1.0|
+#  Data Preparation       | 00:00:00|     00:00:00|         1.0|
+#  Global Routing         | 00:00:00|     00:00:00|         1.0|
+#  Entire Command         | 00:00:01|     00:00:01|         0.9|
+#-------------------------+---------+-------------+------------+
+#
+
+*** Summary of all messages that are not suppressed in this session:
+Severity  ID               Count  Summary
+WARNING   IMPPTN-1250          1  Pin placement has been enabled on metal ...
+WARNING   IMPEXT-6197          1  The Cap table file is not specified. Thi...
+WARNING   IMPEXT-3493          1  The design extraction status has been re...
+WARNING   IMPEXT-3530          1  The process node is not set. Use the com...
+ERROR     NRDB-158             1  Missing vias from %s %s to %s %s in %s %...
+WARNING   NRDB-776             2  No default up %s for %s %s in RULE %s.
+WARNING   NRDB-777             2  No default down %s for %s %s in RULE %s....
+WARNING   NRDB-2040            1  Rule %s doesn't specify any vias that sa...
+WARNING   NRIG-1303            1  The congestion map does not match the GC...
+WARNING   NRIF-19              1  Check ERROR messages in log file and cor...
+WARNING   IMPPSP-1202          2  No suitable DB via cell is found for lay...
+*** Message Summary: 13 warning(s), 1 error(s)
+
+#% End routeDesign (date=04/15 09:57:41, total cpu=0:00:00.8, real=0:00:01.0, peak res=2838.2M, current mem=2792.5M)
+0
+innovus 50>
