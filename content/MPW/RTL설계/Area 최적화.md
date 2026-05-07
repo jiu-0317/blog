@@ -75,6 +75,7 @@ Mode select 인스턴스 2개로 합성했을 때는 무려 21%를 차지한다.
 이렇게 하면 아래와 같은 코드는 비트 폭을 맞춰서 넣어주는걸로 연산자를 간소화할 수 있다.
 
 수정 전: MUX 4개
+
 ```verilog
     wire [2:0] mant_round_candidate = mode ? mant_normalized[6:4] : {1'b0, mant_normalized[6:5]};
     wire       guard  = mode ? mant_normalized[3] : mant_normalized[4];
@@ -105,4 +106,16 @@ E5M2는 E4M3기준으로 정의한 flag들을 1비트 밀려서 정의해주면 
 우와 이게 뭘까..? 면적이 증가했다!
 수정한 결과 코드가 셀이 1개 더 늘었고, 면적도 늘었다. 
 수정할 때 or가 많이 들어간 것 때문에 그런가..
+
+## 2. GATE 추가
+
+만들어둔 게이트를 모두 적용해서 합성해보니 면적이 반토막이 났다!
+
+![[Pasted image 20260507222525.png]]
+
+이게 기존의 module 안쪼갠 FPU 면적
+
+![[Pasted image 20260507222555.png]]
+
+이게 게이트 다 사용한거
 
