@@ -6,6 +6,30 @@ prBoundary 높이: 28.4
 
 ![[Pasted image 20260507184721.png]]
 
+# 22AOI
+
+![[Pasted image 20260508130019.png]]
+
+# 22OAI
+
+![[Pasted image 20260508130047.png]]
+
+# BUF_2_inv
+
+![[Pasted image 20260508130124.png]]
+
+# BUF_4_inv
+
+![[Pasted image 20260508130148.png]]
+
+# DFF_async_set_reset
+
+![[Pasted image 20260508130227.png]]
+
+# FA
+
+![[Pasted image 20260508130248.png]]
+
 # HA
 
 ![[Pasted image 20260507201304.png]]
