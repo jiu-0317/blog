@@ -34,7 +34,7 @@
 | i_i_wen       | in  | 1     | input write enable (i RF 지정)  |
 | i_addr        | in  | 4     | 몇번 register에 쓸지 지정            |
 | i_data        | in  | 9     | 쓸 data                        |
-| i_clear_valid | in  | 1     | input valid 초기화               |
+| i_clear       | in  | 1     | input valid 초기화               |
 | o_w_all_valid | out | 1     | 모든 weight register가 다 찼으면 1   |
 | o_i_all_valid | out | 1     | 모든 input register가 다 찼으면 1    |
 | o_w_data      | out | 9x9   | weight 저장                     |
@@ -49,4 +49,17 @@
 | i_input  | in  | 9     |                   |
 | o_result | out | 9     |                   |
 | o_done   | out | 1     | 다 연산하면 done 생성    |
+
+# FPU_RF
+
+| Port          | Dir | Width | Description               |
+| ------------- | --- | ----- | ------------------------- |
+| i_clk, i_rstn | in  | 1     |                           |
+| i_wen         | in  | 1     | control에서 보낸 write enable |
+| i_clear       | in  | 1     | control에서                 |
+| i_data        | in  | 9     |                           |
+| o_data        | out | 9     |                           |
+| o_all_valid   | out | 1     | control로 보내는 valid        |
+
+
 
