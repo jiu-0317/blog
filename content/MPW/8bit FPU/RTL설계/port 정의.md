@@ -42,13 +42,16 @@
 
 # fpu
 
-| Port     | Dir | Width | Description       |
-| -------- | --- | ----- | ----------------- |
-| i_start  | in  | 1     | control이 보낸 start |
-| i_weight | in  | 9     |                   |
-| i_input  | in  | 9     |                   |
-| o_result | out | 9     |                   |
-| o_done   | out | 1     | 다 연산하면 done 생성    |
+| Port       | Dir | Width | Description       |
+| ---------- | --- | ----- | ----------------- |
+| i_start    | in  | 1     | control이 보낸 start |
+| i_weight   | in  | 9     |                   |
+| i_input    | in  | 9     |                   |
+| o_result   | out | 9     |                   |
+| ~~o_done~~ | out | 1     | 다 연산하면 done 생성    |
+
+--> FPU_top에서 start 신호 1클락만 지연시켜서 all_done 만들면 됨.  
+조합논리니까 9개 done 모아서 all_done 만들 필요 없음.
 
 # FPU_RF
 
@@ -61,5 +64,22 @@
 | o_data        | out | 9     |                           |
 | o_all_valid   | out | 1     | control로 보내는 valid        |
 
+# FP_adder
 
+| Port     | Dir | Width | Description |
+| -------- | --- | ----- | ----------- |
+| i_a      | in  | 9     | 연산 대상       |
+| i_b      | in  | 9     | 연산 대상       |
+| o_result | out | 9     | 연산 결과       |
+
+# ACC
+(FP_adder를 instanciation하여 사용.)
+
+| Port          | Dir | Width | Description           |
+| ------------- | --- | ----- | --------------------- |
+| i_clk, i_rstn | in  | 1     |                       |
+| i_start       | in  | 1     | control에서 받는 연산 시작 신호 |
+| i_data        | in  | 9     | FPU_RF에서 읽어온 data     |
+| o_all_done    | out | 1     | 9개 값의 연산이 끝나면 발생      |
+| o_data        | out | 9     | 누적 합이 완료된 값           |
 
