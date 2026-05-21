@@ -83,3 +83,16 @@
 | o_all_done    | out | 1     | 9개 값의 연산이 끝나면 발생      |
 | o_data        | out | 9     | 누적 합이 완료된 값           |
 
+# ACC_R
+ACC의 결과를 저장한다. 
+
+| Port          | Dir | Width | Description        |
+| ------------- | --- | ----- | ------------------ |
+| i_clk, i_rstn | in  | 1     |                    |
+| i_wen         | in  | 1     | control에서 보낸 wen   |
+| i_mode        | in  | 1     | 0: E4M3 \| 1: E5M2 |
+| i_data        | in  | 9     | ACC 결과             |
+| o_data        | out | 8     | 축소된 포맷             |
+| o_valid       | out | 1     |                    |
+
+
