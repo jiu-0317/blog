@@ -64,3 +64,30 @@ FPU_RF를 없애고 FPU의 연산 결과를 W_I_RF의 input RF에 덮어 씌우�
 더 늘었다.  
 MUX 가 늘어났다.  
 
+이때 latch를 사용하면서 negedge와 posedge 에서 각각 FPU의 연산 결과가 저장되는 문제가 있었는데 (2번째 결과는 쓰레기) fpu_written flag를 추가해서 해결했다.  
+
+문제를 파악하기 위해 schematic을 보니  
+
+![[Pasted image 20260528173450.png]]
+
+이렇게 
+
+![[Pasted image 20260528175628.png]]
+
+![[Pasted image 20260528175852.png]]
+
+
+1961
+
+# 3. TCL
+TCL에 옵션을 더 주니까 면적이 좀 줄었다. 
+
+![[Pasted image 20260529183526.png]]
+
+오른쪽이 수정한 버전이다. 
+
+
+![[Pasted image 20260529185333.png]]
+
+이건 level trigger logic 바꾼건데 면적이 더 늘었다.  
+
