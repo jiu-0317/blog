@@ -55,3 +55,7 @@ mant를 7비트로 늘리고 ACC_R에서 포맷 축소할 때 라운딩을 거�
 
 ![[Pasted image 20260602182822.png]]
 
+# 3. SPI CDC
+
+해당 문제는 [[SPI protocol]] 에서 따로 다룬다. 
+
