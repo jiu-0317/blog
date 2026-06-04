@@ -158,3 +158,5 @@ saturation 관련 로직 수정하니까 소폭 늘었다.
 
 ![[Pasted image 20260604142804.png]]
 
+![[Pasted image 20260604182510.png]]
+
