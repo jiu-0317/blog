@@ -1,0 +1,4 @@
+SDF_FILE = "top.sdf",
+SCOPE = tb_TOP.u_top,
+LOG_FILE = "sdf.log",
+MTM_CONTROL = "MAXIMUM";
