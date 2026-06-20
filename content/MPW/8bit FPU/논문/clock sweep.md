@@ -16,8 +16,7 @@ FPU_LUT를 clock을 sweep해서 20MHz 부터 100MHz 까지 Area와 WNS의 변화
 wns 곡선  
 ![[Pasted image 20260619001734.png]]
 
-base와 lut 결과 비교
-
+base와 lut 결과 비교  
 ![[Pasted image 20260619001755.png]]
 
 ![[Pasted image 20260619001808.png]]
