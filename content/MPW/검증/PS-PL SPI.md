@@ -3,12 +3,12 @@ EMIO를 통해 PS와 PL통신을 해서 SPI 로직을 검증해봐야겠다.
 
 ![[Pasted image 20260612172554.png|603]]
 
-# Block Design
+# Block Design 
 
 ![[Pasted image 20260617133327.png]]
 
 
-# Vitis
+# Vitis  
 
 ```c
 /*
