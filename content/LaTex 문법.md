@@ -40,3 +40,4 @@ $\log p(D \mid \theta) = \sum_{i=1}^{N} \log p(x_i \mid \theta)$
 
 `x_i` — xx x의 아래첨자 ii i입니다. ii i가 한 글자라 중괄호 없이 `x_i`로 충분합니다. 만약 두 글자 이상이면 `x_{ij}`처럼 묶어야 합니다.
 
+\epsilon
