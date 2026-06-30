@@ -41,8 +41,11 @@ $\log p(D \mid \theta) = \sum_{i=1}^{N} \log p(x_i \mid \theta)$
 `x_i` — xx x의 아래첨자 ii i입니다. ii i가 한 글자라 중괄호 없이 `x_i`로 충분합니다. 만약 두 글자 이상이면 `x_{ij}`처럼 묶어야 합니다.
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 \epsilon
 =======
+=======
+>>>>>>> 3cfc0a01f473c7b8eb8f8a58267e9b17212b6e28
 **`\cdot` — 가운뎃점 (가장 많이 씀)**a⋅ba \cdot b a⋅b 처럼 가운데 점으로 곱을 나타냅니다. 수식에서 변수끼리의 곱을 명시할 때 가장 흔하게 쓰입니다. 앞서 ReLU 수식의 `w[k] \cdot i[k]`에서 쓴 게 이겁니다.
 
 **`\times` — 곱셈 엑스 기호**a×ba \times b a×b 처럼 ✕ 모양입니다. 숫자 곱셈(2×32 \times 3 2×3), 행렬·벡터 크기 표기(3×33 \times 3 3×3 행렬), 외적(cross product)에 씁니다.
@@ -51,4 +54,7 @@ $\log p(D \mid \theta) = \sum_{i=1}^{N} \log p(x_i \mid \theta)$
 
 비례 기호는 `\propto`
 
+<<<<<<< HEAD
 >>>>>>> c9bdd73aa6a4c8f271239998b0adbc374998fb29
+=======
+>>>>>>> 3cfc0a01f473c7b8eb8f8a58267e9b17212b6e28
