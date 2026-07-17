@@ -48,3 +48,28 @@ $\log p(D \mid \theta) = \sum_{i=1}^{N} \log p(x_i \mid \theta)$
 
 비례 기호는 `\propto`
 
+$\kappa(\mathbf{x}, \mathbf{x}') = \tanh(\gamma \mathbf{x}^T \mathbf{x}' + r)$
+
+\gamma
+
+$\mathbb{R}^n$
+\mathbb --> 집합기호/차원 나타내는 기호
+
+$\nabla$
+\nabla
+
+$\mu$
+\mu
+
+$\geq$
+\geq
+
+$\leq$
+\leq
+
+$\neq$
+\neq
+
+$\xi$
+\xi 크사이
+
