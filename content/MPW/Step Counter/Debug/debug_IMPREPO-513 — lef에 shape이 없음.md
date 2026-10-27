@@ -160,7 +160,7 @@ etri050_stdcells.lef 를 참고해보자.
 ![[etri050_stdcells (2).lef]]
 
 이건 내꺼
-![[assets/no_tech.lef]]
+![[no_tech.lef]]
 
 
 내가 만든 lef와 비교해보면

@@ -1,0 +1,3 @@
+![[EFFICIENT POST-TRAINING QUANTIZATION WITH FP8 FORMATS.pdf]]
+
+The weight distributions in both classes of models tend to follow normal distributions with lots values near zero. These tensors require more mantissa bits in the data format to represent the distribution accurately. In contrast, activations of NLP models show a lot of outliers which demand a larger dynamic range in the data format to ensure the outliers are accurately represented. We balance this trade-off by assigning E5M2 or E4M3 format for rangebound tensors and E3M4 for precision-bound tensors.
