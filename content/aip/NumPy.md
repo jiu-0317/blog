@@ -896,7 +896,6 @@ reshape이랑 비슷한데, reshape은 만들어질 최종 형태를 쓰고 newa
 그러면 (3, 1) 의 열벡터가 된다.
 
 
-
 To perform matrix multiplication between matrices, we know that number of columns of the left matrix must match the number of rows of the matrix to the right. In NumPy, we can perform matrix multiplication via the `matmul` function.
 
 ```python
