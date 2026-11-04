@@ -918,6 +918,12 @@ np.matmul(matrix, row_vector)
 
     array([14, 32])
 
+--> roe_vector는 열벡터도 아니고 행벡터도 아니다. 그냥 1차원 배열이다.
+이걸 2차원 벡터와matmul하면 
+1. 뒤에 있는 배열을 열 벡터로 취급한다. (3, ) --> (3, 1)
+2. 일반 행렬곱을 수행한다. 
+
+
 Similarly, we can compute the dot-product between two vectors (here: the vector norm).
 
 ```python

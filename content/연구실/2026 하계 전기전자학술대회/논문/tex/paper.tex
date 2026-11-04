@@ -1,0 +1,267 @@
+% !TEX program = xelatex
+% 2026년 한국전기전자학회 학술대회 논문 양식
+% 컴파일: XeLaTeX 사용 (한글 폰트 처리)
+\documentclass[10pt,a4paper,twocolumn]{article}
+
+%==================== 패키지 ====================
+\usepackage{kotex}                 % 한글 (XeLaTeX + xeCJK 기반)
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\usepackage{geometry}
+\usepackage{amsmath,amssymb}       % 수식
+\usepackage{graphicx}              % 그림
+\usepackage{caption}
+\usepackage{array}
+\usepackage{booktabs}              % 표 스타일 (가로줄 위주)
+\usepackage{titlesec}              % 절 제목 형식
+\usepackage{fancyhdr}              % 머리말
+\usepackage{enumitem}
+\xeCJKsetup{CJKspace = true}
+%==================== 여백 ====================
+\geometry{
+  top=20mm, bottom=20mm,
+  left=18mm, right=18mm,
+  columnsep=8mm
+}
+
+%==================== 한글 폰트 ====================
+% 본문: 바탕(명조 계열), 제목/제목줄: 맑은 고딕(고딕 계열)
+%\setmainfont{Times New Roman}
+%\setCJKmainfont{Batang}            % 본문 한글
+%\setCJKsansfont{Malgun Gothic}     % 제목용 한글
+%\newcommand{\gothic}[1]{{\sffamily #1}}
+
+\setmainfont{Times New Roman}[WordSpace=1.7]
+\setCJKmainfont{Batang}[WordSpace=1.7,AutoFakeBold=2.5]      % 본문 한글 (Batang은 굵은 글꼴이 없어 AutoFakeBold 사용)
+\setCJKsansfont{Malgun Gothic}[WordSpace=1.7]
+\newcommand{\gothic}[1]{{\sffamily #1}}
+
+%==================== 머리말 ====================
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0pt}
+\fancyhead[C]{\footnotesize 2026년 한국전기전자학회 학술대회}
+
+%==================== 절 제목 형식 ====================
+% I. 서 론  형태 (로마숫자, 가운데, 고딕, 굵게)
+\renewcommand{\thesection}{\Roman{section}.}
+\titleformat{\section}
+  {\centering\sffamily\bfseries\fontsize{11}{14}\selectfont}
+  {\thesection}{0.5em}{}
+\titlespacing*{\section}{0pt}{12pt}{8pt}
+
+% 1. 제목  형태 (아라비아숫자, 왼쪽, 고딕)
+\renewcommand{\thesubsection}{\arabic{subsection}.}
+\titleformat{\subsection}
+  {\sffamily\bfseries\fontsize{10}{13}\selectfont}
+  {\thesubsection}{0.5em}{}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+
+%==================== 그림/표 캡션 형식 ====================
+\captionsetup{font={footnotesize},labelsep=period,skip=4pt}
+\captionsetup[figure]{name=그림}
+\captionsetup[table]{name=표}
+
+%==================== 본문 기본 크기 ====================
+% 본문 10pt
+\renewcommand{\baselinestretch}{1.1}
+
+%==================== 그림/표 주변 여백 (행간 아님) ====================
+\setlength{\textfloatsep}{6pt plus 2pt minus 2pt}
+\setlength{\intextsep}{6pt plus 2pt minus 2pt}
+\setlength{\floatsep}{6pt plus 2pt minus 2pt}
+
+\begin{document}
+\setlength{\spaceskip}{0.4em plus 0.1em minus 0.05em}
+
+%==================== 제목부 (단 전체 폭) ====================
+\twocolumn[
+  \begin{@twocolumnfalse}
+  \vspace*{6mm}
+  \begin{center}
+    {\fontsize{18}{22}\selectfont\sffamily 가환성 기반 LUT 축소를 이용한 \\혼합 정밀도 곱셈기의 면적 최적화\par}
+    \vspace{6mm}
+    {\fontsize{11}{14}\selectfont $^{1}$노지우, $^{1}$최성우, $^{2}$강조인, $^{1}$최희선, $^{1}$김윤지, $^{1}$이성원$^{*}$\par}
+    \vspace{2mm}
+    {\footnotesize $^{1}$광운대학교 \; 컴퓨터정보공학부, \; $^{2}$광운대학교\; 인공지능융합공학과\par}
+    \vspace{1mm}
+    {\footnotesize E-mail : avo0317@kw.ac.kr ukleon123@gmail.com kjikji956@gmail.com heeseon7379@naver.com yj040510@naver.com swlee@kw.ac.kr \par}
+    \vspace{1mm}
+    \vspace{5mm}
+  \end{center}
+
+  %---------- 요약 (8.5pt) ----------
+  \begin{center}
+    {\sffamily\bfseries\fontsize{11}{14}\selectfont 요 \ 약}
+  \end{center}
+  {\fontsize{8.5}{11}\selectfont
+  %\hangindent=1em
+  저정밀 부동소수점 (FP8) 연산이 널리 사용됨에 따라, 반복적으로 대량 복제되는 MAC 연산기의 단위 면적 최적화가 중요해지고 있다. 특히 가수부의 곱셈·정규화·라운딩 경로는 저정밀에서도 상당한 면적을 차지하여 최적화 여지가 크다. 
+  본 논문에서는 E5M3 곱셈기를
+  대상으로, 가수부의 곱셈$\cdot$정규화$\cdot$라운딩$\cdot$라운딩 오버플로우를 LUT로 대체하여 면적을 최적화한다. 
+  나아가 곱셈의 가환성에 의한
+  결과 중복을 제거하여 LUT를 약 44\% 축소한다. 제안 기법은 Base 대비 평균 9.0\%,
+  200\,MHz에서 최대 20\%의 면적을 절감하였으며, 절감 효과는 동작 주파수가
+  높을수록 커지고 최대 동작 주파수 또한 200\,MHz에서 230\,MHz로 향상되었다.\par
+  \vspace{2mm}
+  }
+  \vspace{6mm}
+  \end{@twocolumnfalse}
+]
+
+%==================== I. 서 론 ====================
+\section{서 론}
+
+최근 저정밀 추론에서 FP8(E4M3, E5M2) 포맷이 널리 채택되고 있다[1, 2]. 그러나 저정밀 곱셈기에서는 가수부 곱셈기가 전체 면적의 대부분을 차지하며, 특히 MAC 연산기가 가속기 내에서 대규모로 복제되는 구조에서는 단위 연산기의 면적 절감이 전체 면적에 크게 증폭되어 나타난다. 따라서 회로 수준의 면적 최적화가 중요하다.
+
+본 논문에서는 E5M2와 E4M3 같은 FP8 포맷을 단일 경로에서 처리하는 통합 MAC 연산기에 사용될 수 있는 E5M3 형식을 대상으로, 해당 MAC에 포함되는 곱셈기의 면적을 최적화한다. 최적화 방식은 가수부의 곱셈·정규화·라운딩·라운딩 오버플로우를 단일 LUT(Look-Up Table)로 대체하는 것이다. 나아가 곱셈의 가환성에 의한 결과 중복을 제거하여 LUT를 축소함으로써 면적을 추가로 절감한다.
+
+%==================== II. 관련 연구 ====================
+\section{관련 연구}
+
+저정밀 부동소수점 연산기의 효율화를 위한 다양한 하드웨어 연구가
+진행되어 왔다. S.~Kumar 등[3]은 FP8과 FP4를 지원하는 이중 정밀도 MAC 처리
+요소(PE)를 제안하고, 비트 분할 기법을 적용하여 연산기 구조 차원에서
+면적과 전력을 절감하였다. 또한 Y.~Guo 등[4]은 LUT 공유를 활용한 근사 곱셈기를 통해 곱셈 연산을 LUT로 효율적으로 구현하였다.
+본 연구에서는 곱셈에 더해 정규화$\cdot$라운딩$\cdot$라운딩 오버플로우까지
+단일 LUT로 통합하고, 곱셈의 가환성을 이용한 LUT 축소를 함께 적용하여
+면적을 최적화한다.
+
+
+%==================== 실험 대상 설계 ====================
+\section{E5M3 곱셈기 설계}
+
+실험 대상은 E5M2와 E4M3의 혼합연산에 사용될 수 있는 E5M3 포맷의 곱셈기이다. 
+두 E5M3 피연산자를 곱해 하나의 E5M3 결과를 출력한다.
+곱셈기는 조합논리 곱셈 코어를 입력 레지스터와 출력 레지스터로 감싼 구조로, 조합 경로를 레지스터 간 경로(register-to-register)로 만들어 타이밍 클로저(Fmax, setup/hold)를 검증할 수 있도록 하였다. 비교 대상인 Base·Full LUT·Half LUT 세 설계는 동일한 레지스터 래핑 골격을 공유하고 가수부 처리 방식만 다르다.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{../schematic.png}
+  \caption{E5M2와 E4M3의 \\혼합 정밀도 곱셈을 위한 E5M3 구조} 
+  \label{fig:schematic}
+\end{figure}
+
+
+%==================== III. 실험 환경 및 대상 설계 ====================
+\section{실험 설계}
+
+최적화 방식에 따른 면적 절감 효과를 분리하여 평가하기 위해 다음 세 가지 설계를 비교하였다.
+\begin{itemize}[leftmargin=1.2em,itemsep=1pt,topsep=2pt]
+  \item Base: 가수부 곱셈을 곱셈기로 수행하고 정규화, 라운딩
+        (round-to-nearest-even), 라운딩 오버플로우를 논리회로로 구현.
+  \item Full LUT: 곱셈$\cdot$정규화$\cdot$라운딩$\cdot$라운딩
+        오버플로우를 64개 엔트리의 단일 LUT로 대체.
+  \item Half LUT (제안): 곱셈의 가환성($A\times B = B\times A$)에
+        의한 결과 중복을 제거하여 LUT를 36개 엔트리로 축소.
+\end{itemize}
+모든 설계는 입력$\cdot$출력 레지스터를 갖는 동일한 파이프라인 구조에서
+합성하였다. 
+또한 0.5μm CMOS 공정의 표준 셀 라이브러리를 대상으로 Cadence Genus를 사용하여 논리 합성을 진행하고 타이밍 및 면적을 분석하였다.
+%==================== 4. 실험 결과 ====================
+\section{실험 결과}
+
+\subsection{가환성을 활용한 LUT 축소}
+본 실험에서는 세가지 설계가 모두 타이밍 위반을 일으키지 않는 범위인 100MHz부터 200MHz 까지 10MHz간격으로 주파수를 변화시키며 평균 면적을 측정하였다.
+실험 결과 Full LUT는 Base 대비 평균 4.4\%
+감소에 그치고 일부 주파수에서는 오히려 면적이 증가한다.
+반면 가환성을 활용하여 LUT를 축소한 Half LUT는 평균 9.0\%의 면적
+절감을 달성한다. 
+이는 LUT 대체 자체보다 결과 중복 제거에 의한 LUT
+축소가 면적 절감의 핵심 요인임을 보인다.
+
+\begin{table}[h]
+  \centering
+  \caption{100$\sim$200\,MHz 평균 면적 및 Base 대비 면적 절감률}
+  \label{tab:avg}
+  \footnotesize
+  \begin{tabular}{lcc}
+    \toprule
+    \textbf{설계} & \textbf{평균 면적} & \textbf{Base 대비 면적 절감률} \\
+    \midrule
+    Base     & 128,448 & --- \\
+    Full LUT & 122,845 & 4.4\% \\
+    \textbf{Half LUT} & \textbf{116,939} & \textbf{9.0\%} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsection{주파수 대비 면적 비교}
+본 실험에서는 100MHz부터 300MHz 까지 10MHz간격으로 주파수를 변화시키며 주파수에 따른 면적 변화와 
+각 설계에서 타이밍 위반이 일어나는 지점을 비교하였다.
+그림~\ref{fig:area}는 세 설계의 동작 주파수 대비 총 면적을 나타내며 
+각 곡선은 해당 설계의 최대 동작 주파수에서 끝난다.
+Base는 주파수가 높아질수록 곱셈기의 임계 경로를 만족시키기 위해
+면적이 급격히 증가한다. 반면 제안한 Half LUT는 임계 경로가 짧아 면적 증가가 완만하며, Base와의 격차가
+주파수에 따라 확대된다. 표~\ref{tab:reduction}과 같이 Base 대비 면적
+절감률은 100\,MHz에서 약 7\%에 불과하나 200\,MHz에서는 약 20\%까지
+증가한다. 본 실험을 통해 목표 주파수가 높을수록 LUT 기반 설계의 면적 이점이 커진다는 것을 확인할 수 있다.
+
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=\linewidth]{../freq_area_v2.png}
+  \caption{동작 주파수에 따른 총 면적}
+  \label{fig:area}
+\end{figure}
+
+\begin{table}[h]
+  \centering
+  \caption{주파수별 Base 대비 Half LUT 면적 절감률}
+  \label{tab:reduction}
+  \footnotesize
+  \begin{tabular}{cccc}
+    \toprule
+    \textbf{주파수(MHz)} & \textbf{Base} & \textbf{Half LUT} & \textbf{면적 절감률} \\
+    \midrule
+    100 & 120,154 & 111,514 & 7.2\% \\
+    160 & 131,674 & 116,122 & 11.8\% \\
+    190 & 139,968 & 121,882 & 12.9\% \\
+    \textbf{200} & \textbf{156,096} & \textbf{124,531} & \textbf{20.2}\% \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+LUT 기반 설계는 곱셈기의 임계 경로를 제거함으로써 달성 가능한 최대
+주파수($F_{max}$)도 향상시킨다. Base는 200\,MHz까지만 타이밍을
+충족하는 반면, Half LUT와 Full LUT는 각각 230\,MHz, 240\,MHz까지
+충족한다. Half LUT가 Full LUT보다 $F_{max}$가 한 단계 낮은 것은
+가환성 적용을 위한 정렬 비교기가 임계 경로에 포함되기 때문으로 해석된다. 
+상대적으로 높은 주파수에서 Base 대비 LUT 기반 설계의 면적 감소율이 높은 것은 고주파수로 동작하는 저정밀 MAC 배열에서 본 기법이 효과적인 면적 최적화 수단이 될 수 있음을 보인다. 
+
+%==================== III. 결 론 ====================
+\section{결 론}
+본 논문에서는 E5M3 곱셈기를 대상으로, 가수부의 곱셈$\cdot$정규화$\cdot$라운딩$\cdot$
+라운딩 오버플로우를 LUT로 대체하여 면적을 최적화하였다.
+단순한 LUT 대체(Full LUT)만으로는 면적 절감이 평균 4.4\%에 그치고
+일부 주파수에서는 오히려 증가하였으나, 곱셈의 가환성($A\times B = B\times A$)에
+의한 결과 중복을 제거하여 LUT를 약 44\% 축소한 Half LUT은 Base 대비 평균 9.0\%, 200\,MHz에서 최대 20\%의 면적 절감을 달성하였다. 특히 면적 절감 효과는 동작 주파수가 높을수록
+커지며, LUT 기반 설계는 곱셈기의 임계 경로를 제거함으로써 달성 가능한 타이
+최대 주파수($F_{max}$) 또한 Base대비 15\% 향상시켰다.
+향후 연구로는 제안 곱셈기를 시스톨릭 MAC 배열에 통합하여 시스템 수준의 면적 및 전력 절감 효과를 검증하고자 한다.
+
+%==================== 감사의 글 ====================
+\section*{감사의 글}
+[본 연구는 2024년 산업통상자원부, 한국산업기술기획평가원(KEIT) 및 한국반도체연구조합 지원 사업인 민관공동투자반도체고급인력양성사업(2410017499, RS-2024-00403397, 24056-15TC)으로 수행되었음.]
+
+%==================== References ====================
+\section*{References}
+%\begin{center}\sffamily\bfseries References\end{center}
+\footnotesize
+\begin{enumerate}[label={[\arabic*]},leftmargin=*,labelsep=0.5em,itemsep=2pt]
+  \item P. Micikevicius, D. Stosic, N. Burgess, et al.,
+        ``FP8 Formats for Deep Learning,''
+        \textit{arXiv preprint arXiv:2209.05433}, 2022.
+  \item A. Kuzmin, M. van Baalen, Y. Ren, M. Nagel, J. Peters, and
+        T. Blankevoort, ``FP8 Quantization: The Power of the Exponent,''
+        \textit{Advances in Neural Information Processing Systems (NeurIPS)},
+        2022, pp. 14651--14662.
+  \item S. Kumar, V. P. Sharma, V. Neema, and S. K. Vishvakarma,
+        ``DHFP-PE: Dual-Precision Hybrid Floating Point Processing Element
+        for AI Acceleration,'' \textit{arXiv preprint arXiv:2604.04507}, 2026.
+  \item Y. Guo, Q. Zhou, X. Chen, and H. Sun, ``High-Efficiency
+        FPGA-Based Approximate Multipliers with LUT Sharing and Carry
+        Switching,'' \textit{Proc. Design, Automation \& Test in Europe
+        Conf. (DATE)}, 2024, pp. 1--2.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,125 @@
+This is XeTeX, Version 3.141592653-2.6-0.999997 (MiKTeX 25.12) (preloaded format=xelatex.fmt)
+ restricted \write18 enabled.
+entering extended mode
+(paper.tex
+LaTeX2e <2025-11-01>
+L3 programming layer <2025-12-24>
+(D:\MiKTeX\tex/latex/base\article.cls
+Document Class: article 2025/01/22 v1.4n Standard LaTeX document class
+(D:\MiKTeX\tex/latex/base\size10.clo)) (D:\MiKTeX\tex/latex/cjk-ko\kotex.sty
+(D:\MiKTeX\tex/latex/kotex-utf\kotex.cfg)
+(D:\MiKTeX\tex/xetex/xetexko\xetexko.sty
+(D:\MiKTeX\tex/generic/unicode-data\load-unicode-xetex-classes.tex 
+load-unicode-xetex-classes.tex v1.19 (2025-09-26)
+Reading Unicode east Asian character class data
+# LineBreak-17.0.0.txt 
+# Date: 2025-07-29, 13:52:18 GMT 
+# EastAsianWidth-17.0.0.txt 
+# Date: 2025-07-24, 00:12:54 GMT 
+) (D:\MiKTeX\tex/latex/fontspec\fontspec.sty
+(D:\MiKTeX\tex/latex/l3packages/xparse\xparse.sty
+(D:\MiKTeX\tex/latex/l3kernel\expl3.sty
+(D:\MiKTeX\tex/latex/l3backend\l3backend-xetex.def)))
+(D:\MiKTeX\tex/latex/fontspec\fontspec-xetex.sty
+(D:\MiKTeX\tex/latex/base\fontenc.sty)
+(D:\MiKTeX\tex/latex/fontspec\fontspec.cfg)))
+(D:\MiKTeX\tex/latex/cjk-ko\kolabels-utf.sty)))
+(D:\MiKTeX\tex/xelatex/xecjk\xeCJK.sty
+
+LaTeX Warning: You have requested release `2026/06/01' of LaTeX,
+               but only release `2025-11-01' is available.
+
+(D:\MiKTeX\tex/latex/ctex\ctexhook.sty
+
+LaTeX Warning: You have requested release `2026/06/01' of LaTeX,
+               but only release `2025-11-01' is available.
+
+) (D:\MiKTeX\tex/latex/l3packages/xtemplate\xtemplate.sty)
+(D:\MiKTeX\tex/xelatex/xecjk\xeCJK.cfg))
+(D:\MiKTeX\tex/latex/geometry\geometry.sty
+(D:\MiKTeX\tex/latex/graphics\keyval.sty)
+(D:\MiKTeX\tex/generic/iftex\ifvtex.sty (D:\MiKTeX\tex/generic/iftex\iftex.sty)
+) (D:\MiKTeX\tex/latex/geometry\geometry.cfg))
+(D:\MiKTeX\tex/latex/amsmath\amsmath.sty
+For additional information on amsmath, use the `?' option.
+(D:\MiKTeX\tex/latex/amsmath\amstext.sty
+(D:\MiKTeX\tex/latex/amsmath\amsgen.sty))
+(D:\MiKTeX\tex/latex/amsmath\amsbsy.sty)
+(D:\MiKTeX\tex/latex/amsmath\amsopn.sty))
+(D:\MiKTeX\tex/latex/amsfonts\amssymb.sty
+(D:\MiKTeX\tex/latex/amsfonts\amsfonts.sty))
+(D:\MiKTeX\tex/latex/graphics\graphicx.sty
+(D:\MiKTeX\tex/latex/graphics\graphics.sty
+(D:\MiKTeX\tex/latex/graphics\trig.sty)
+(D:\MiKTeX\tex/latex/graphics-cfg\graphics.cfg)
+(D:\MiKTeX\tex/latex/graphics-def\xetex.def)))
+(D:\MiKTeX\tex/latex/caption\caption.sty
+(D:\MiKTeX\tex/latex/caption\caption3.sty))
+(D:\MiKTeX\tex/latex/tools\array.sty)
+(D:\MiKTeX\tex/latex/booktabs\booktabs.sty)
+(D:\MiKTeX\tex/latex/titlesec\titlesec.sty)
+(D:\MiKTeX\tex/latex/fancyhdr\fancyhdr.sty)
+(D:\MiKTeX\tex/latex/enumitem\enumitem.sty) (paper.aux)
+
+Package xeCJK Warning: Unknown CJK family `\CJKttdefault' is being ignored.
+(xeCJK)                
+(xeCJK)                Try to use `\setCJKmonofont[<...>]{<...>}' to define
+(xeCJK)                it.
+
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <5.5> not available
+(Font)              size <5> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 106.
+
+(D:\MiKTeX\tex/latex/amsfonts\umsa.fd) (D:\MiKTeX\tex/latex/amsfonts\umsb.fd)
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <5.5> not available
+(Font)              size <5> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <8.5> not available
+(Font)              size <8> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OML/cmm/m/it' in size <4.25> not available
+(Font)              size <5> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OMS/cmsy/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <8.5> not available
+(Font)              size <8> substituted on input line 106.
+
+
+LaTeX Font Warning: Font shape `OT1/cmr/m/n' in size <4.25> not available
+(Font)              size <5> substituted on input line 106.
+
+
+Underfull \vbox (badness 10000) has occurred while \output is active [1]
+
+LaTeX Font Warning: Font shape `TU/UnBatang.ttf(0)/m/it' undefined
+(Font)              using `TU/UnBatang.ttf(0)/m/n' instead on input line 240.
+
+[2] (paper.aux)
+
+LaTeX Font Warning: Size substitutions with differences
+(Font)              up to 0.75pt have occurred.
+
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ )
+(see the transcript file for additional information)
+Output written on paper.pdf (2 pages).
+Transcript written on paper.log.
